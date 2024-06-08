@@ -11,7 +11,7 @@
         <form class="login-form" id="signinForm">
             <h2>Login</h2>
             <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Username" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
                 <input type="password" id="password" name="password" placeholder="Password" required>
@@ -23,25 +23,15 @@
                 <button type="submit">Login</button>
             </div>
             <div class="form-group">
-                <p>Or Sign In Using</p>
-                <div class="social-login">
-                    <a href="#"><img src="facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="twitter.png" alt="Twitter"></a>
-                    <a href="#"><img src="google.png" alt="Google"></a>
-                </div>
-            </div>
-            <div class="form-group">
-                <p>Or Sign Up Using</p>
-                <a href="signup.html" class="signup-link">Sign Up</a>
+                <p>New User? <a href="signup.html" class="signup-link"><u>Sign up now</u></a></p>
             </div>
         </form>
     </div>
     <script>
         document.getElementById('signinForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            // Implement your signin logic here (e.g., AJAX request to the server)
-            // On successful signin, redirect to the index page
-            alert('Sign In Successful!');
+            // Simulate successful login
+            localStorage.setItem('isLoggedIn', 'true');
             window.location.href = 'index.html';
         });
     </script>
