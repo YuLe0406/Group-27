@@ -1,0 +1,41 @@
+body.landing-page {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light grey background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.selection-button {
+    background-color: #333;
+    color: white;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.selection-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
