@@ -1,20 +1,26 @@
 body.landing-page {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9; /* Light grey background */
+    background-image: url('background_image.jpg');
+    background-size: cover;
+    background-position: center;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: white; /* Make text white for better contrast against the background */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Add a subtle shadow for better readability */
 }
 
 .container {
     text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
+    padding: 20px;
+    border-radius: 10px;
 }
 
 h1 {
-    color: #333;
     margin-bottom: 40px;
 }
 
