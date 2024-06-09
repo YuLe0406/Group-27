@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header, footer {
+    background-color: beige; /* Change background color to beige */
+    color: #333; /* Change text color to dark */
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #333; /* Change link color to dark */
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #333; /* Change heading color to dark */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+button {
+    background-color: beige; /* Change button background color to beige */
+    color: #333; /* Change button text color to dark */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e6ccb2; /* Lighten button background color on hover */
+}
+
+form label {
+    display: block;
+    margin-top: 10px;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+form button {
+    margin-top: 10px;
+}
+
+/* Add a hover effect for navigation bar links */
+nav ul li a:hover {
+    color: #ff6600; /* Change the text color on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Add a hover effect with a box around navigation bar links */
+nav ul li a {
+    display: inline-block; /* Add display property to enable padding */
+    padding: 10px; /* Add padding to create space around the link */
+    transition: background-color 0.3s ease; /* Add transition for smooth effect */
+}
+
+nav ul li a:hover {
+    background-color: #f0f0f0; /* Change the background color on hover */
+    border: 1px solid #ff6600; /* Add a border around the link on hover */
+    border-radius: 5px; /* Add border radius for rounded corners */
+}
+
