@@ -2,6 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 header, footer {
@@ -109,5 +110,22 @@ body, html {
 .logo img {
     width: 100px;
     height: auto;
+}
+
+.ms {
+    width: 100px; /* Width of the button */
+    height: 100px; /* Height of the button */
+    background-color: #4CAF50; /* Background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 0; /* Square corners */
+    display: flex; /* Flexbox for centering text */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    font-size: 16px; /* Font size */
+}
+
+.ms:hover {
+    background-color: #45a049; /* Change background color on hover */
 }
 
