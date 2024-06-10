@@ -94,3 +94,19 @@ nav ul li a:hover {
     border: 1px solid #ff6600; /* Add a border around the link on hover */
     border-radius: 5px; /* Add border radius for rounded corners */
 }
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.logo-container {
+    position: absolute;
+    top: 1px; 
+    left: 10px;
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+}
