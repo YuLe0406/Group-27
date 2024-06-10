@@ -5,7 +5,7 @@
     <title>Sales Report</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="sales-report-page">
     <header>
         <h1>Sales Report</h1>
     </header>
@@ -17,7 +17,7 @@
             <li><a href="manage_categories.html">Manage Categories</a></li>
             <li><a href="manage_products.html">Manage Products</a></li>
             <li><a href="manage_orders.html">Manage Orders</a></li>
-            <li><a href="sales_report.html">Sales Report</a></li>
+            <li><a href="sales_report.html" class="active">Sales Report</a></li>
         </ul>
     </nav>
     <main>
@@ -32,8 +32,9 @@
                 <td>January</td>
                 <td>$5000</td>
             </tr>
+            <!-- Add more rows as needed -->
         </table>
-        <button>Print Report</button>
+        <button onclick="window.print()">Print Report</button>
     </main>
     <footer>
         <p>&copy; 2024 Company Name</p>
