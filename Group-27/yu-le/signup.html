@@ -23,25 +23,14 @@
                 <button type="submit">Sign Up</button>
             </div>
             <div class="form-group">
-                <p>Or Sign Up Using</p>
-                <div class="social-login">
-                    <a href="#"><img src="facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="twitter.png" alt="Twitter"></a>
-                    <a href="#"><img src="google.png" alt="Google"></a>
-                </div>
-            </div>
-            <div class="form-group">
-                <p>Or Sign In Using</p>
-                <a href="signin.html" class="signin-link">Sign In</a>
+                <p>Already a user? <a href="signin.html" class="signin-link"><u>Login</u></a></p>
             </div>
         </form>
     </div>
     <script>
         document.getElementById('signupForm').addEventListener('submit', function(event) {
             event.preventDefault();
-            // Implement your signup logic here (e.g., AJAX request to the server)
-            // On successful signup, redirect to the signin page
-            alert('Sign Up Successful!');
+            // Simulate successful sign-up
             window.location.href = 'signin.html';
         });
     </script>

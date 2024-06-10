@@ -1,0 +1,47 @@
+body.landing-page {
+    font-family: Arial, sans-serif;
+    background-image: url('background_image.jpg');
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white; /* Make text white for better contrast against the background */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Add a subtle shadow for better readability */
+}
+
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.selection-button {
+    background-color: #333;
+    color: white;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.selection-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
