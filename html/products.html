@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+    <header>
+        <h1>Product Page</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+            <li><a href="signin.html">Sign In</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="product1.jpg" alt="Product Image">
+            </div>
+            <div class="product-details">
+                <h2>Product Name</h2>
+                <p class="price">$99.99</p>
+                <p class="description">This is a brief description of the product. It highlights the key features and specifications.</p>
+                <div class="sizes">
+                    <label for="sizes">Size:</label>
+                    <select id="sizes" name="sizes">
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="xl">XL</option>
+                    </select>
+                </div>
+                <div class="colors">
+                    <label for="colors">Color:</label>
+                    <select id="colors" name="colors">
+                        <option value="red">Red</option>
+                        <option value="blue">Blue</option>
+                        <option value="black">Black</option>
+                    </select>
+                </div>
+                <button type="button" class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Company Name</p>
+    </footer>
+</body>
+</html>
