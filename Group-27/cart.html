@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartList = document.getElementById('cart-list');
+            const totalPriceElem = document.getElementById('total-price');
+            cartList.innerHTML = '';
+            let totalPrice = 0;
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} - RM${item.price}`;
+                cartList.appendChild(li);
+                totalPrice += item.price;
+            });
+            totalPriceElem.textContent = `Total: RM${totalPrice}`;
+        }
+
+        function clearCart() {
+            localStorage.removeItem('cart');
+            loadCart();
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
 </head>
 <body>
     <header>
@@ -20,11 +43,11 @@
     </nav>
     <main>
         <h2>Your Cart</h2>
-        <ul>
-            <li>Product 1 - $100</li>
-            <li>Product 2 - $50</li>
+        <ul id="cart-list">
+            <!-- Cart items will be inserted here by JavaScript -->
         </ul>
-        <p>Total: $150</p>
+        <p id="total-price">Total: RM0.00</p>
+        <button onclick="clearCart()">Clear Cart</button>
         <button>Checkout</button>
     </main>
     <footer>
