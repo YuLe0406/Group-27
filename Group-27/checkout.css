@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #80d350;
     color: white;
     padding: 20px;
     text-align: center;
@@ -22,8 +22,8 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #444;
-    margin: 0;
+    background-color: #797e11;
+
 }
 
 nav ul li {
@@ -99,6 +99,18 @@ button:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
+    background-color: #80d350;
     color: white;
+}
+
+.logo-container {
+    position: absolute;
+    top: 1px; 
+    left: 10px;
+    
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
 }
