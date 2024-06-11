@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="checkout.css">
 </head>
@@ -19,18 +20,43 @@
         </ul>
     </nav>
     <main>
-        <form action="/submit_checkout" method="post">
-            <label for="card_number">Card Number:</label>
-            <input type="text" id="card_number" name="card_number" required>
-            <label for="expiry_date">Expiry Date:</label>
-            <input type="text" id="expiry_date" name="expiry_date" required>
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" name="cvv" required>
+        <form action="/submit_checkout" method="post" class="checkout-form">
+            <h2>Receiver Information</h2>
+            <div class="form-group">
+                <label for="full_name">Full Name:</label>
+                <input type="text" id="full_name" name="full_name" required>
+            </div>
+            <div class="form-group">
+                <label for="contact_number">Contact Number:</label>
+                <input type="text" id="contact_number" name="contact_number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email (for receipt):</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <h2>Payment Information</h2>
+            <div class="form-group">
+                <label for="card_holder">Card Holder Name:</label>
+                <input type="text" id="card_holder" name="card_holder" required>
+            </div>
+            <div class="form-group">
+                <label for="card_number">Card Number:</label>
+                <input type="text" id="card_number" name="card_number" required>
+            </div>
+            <div class="form-group">
+                <label for="expiry_date">Expiry Date:</label>
+                <input type="text" id="expiry_date" name="expiry_date" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
+            </div>
             <button type="submit">Pay Now</button>
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 Company Name</p>
+        <p>&copy; 2024 Company Name. All rights reserved.</p>
     </footer>
 </body>
 </html>
