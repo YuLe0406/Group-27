@@ -4,15 +4,7 @@
     <meta charset="UTF-8">
     <title>VICTOR Bravesword 1000 - Product Detail</title>
     <link rel="stylesheet" href="product detail.css">
-    <script>
-        function addToCart(productName, productPrice) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const product = { name: productName, price: productPrice };
-            cart.push(product);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            alert(productName + " has been added to your cart.");
-        }
-    </script>
+    <script src="cart.js"></script> <!-- Include the JavaScript file -->
 </head>
 <body>
     <header>
@@ -43,12 +35,12 @@
                     <li>Shaft Material: High Modulus Graphite + Nano Resin</li>
                     <li>Recommended for: Offensive Play</li>
                 </ul>
-                <button onclick="addToCart('VICTOR Bravesword 1000', 289)">Add to Cart</button>
+                <button onclick="addToCart('VICTOR Bravesword 1000', 289, 'VICTOR Bravesword 1000.jpg')">Add to Cart</button>
             </div>
         </div>
     </main>
     <footer>
-        <p>&copy; 2024 PEPE</p>
+        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
     </footer>
 </body>
 </html>
