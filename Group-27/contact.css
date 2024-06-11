@@ -97,3 +97,14 @@ footer {
     width: 100%;
     bottom: 0;
 }
+.logo-container {
+    position: absolute;
+    top: 1px; 
+    left: 10px;
+    
+}
+
+.logo-container img {
+    width: 100px;
+    height: auto;
+}
