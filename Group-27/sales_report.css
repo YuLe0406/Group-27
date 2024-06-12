@@ -4,12 +4,24 @@ body {
     padding: 0;
 }
 
-header, footer {
+header {
     background-color: beige; /* Change background color to beige */
     color: #333; /* Change text color to dark */
     text-align: center;
     padding: 10px 0;
 }
+
+footer {
+    background-color: beige; /* Change background color to beige */
+    color: #333; /* Change text color to dark */
+    text-align: center;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5;
+}
+
 
 nav ul {
     list-style-type: none;
