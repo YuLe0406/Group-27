@@ -4,11 +4,12 @@ body {
     padding: 0;
 }
 
-header, footer {
+header{
     background-color: beige; /* Change background color to beige */
     color: #333; /* Change text color to dark */
     text-align: center;
     padding: 10px 0;
+    
 }
 
 nav ul {
@@ -109,4 +110,14 @@ body, html {
 .logo-container img {
     width: 100px;
     height: auto;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: beige;
+    color:black;
+    width: 100%;
+    flex-shrink: 0;
+    height: 2.5rem;
 }

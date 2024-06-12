@@ -5,11 +5,18 @@ body {
     text-align: center;
 }
 
-header, footer {
+header {
     background-color: beige; /* Change background color to beige */
     color: #333; /* Change text color to dark */
     text-align: center;
     padding: 10px 0;
+}
+
+footer {
+    background-color: beige; /* Change background color to beige */
+    color: #333; /* Change text color to dark */
+    text-align: center;
+   padding: 10px 0;
 }
 
 nav ul {
