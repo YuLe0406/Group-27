@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment and Rating</title>
+    <link rel="stylesheet" href="comment_rating.css">
+</head>
+<body>
+    <header>
+        <h1>Product Comments and Ratings</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="cart.html">Shopping Cart</a></li>
+            <li><a href="comment_rating.html">Comments and Ratings</a></li>
+        </ul>
+    </nav>
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <main>
+        <section class="comment-form-section">
+            <h2>Leave a Comment and Rating</h2>
+            <form id="commentForm">
+                <div class="form-group">
+                    <label for="userName">Name:</label>
+                    <input type="text" id="userName" name="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="userComment">Comment:</label>
+                    <textarea id="userComment" name="userComment" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="userRating">Rating:</label>
+                    <select id="userRating" name="userRating" required>
+                        <option value="5">5 - Excellent</option>
+                        <option value="4">4 - Good</option>
+                        <option value="3">3 - Average</option>
+                        <option value="2">2 - Poor</option>
+                        <option value="1">1 - Terrible</option>
+                    </select>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+        <section class="comments-section">
+            <h2>Comments and Ratings</h2>
+            <div id="commentsContainer">
+                <!-- Comments will be displayed here -->
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
+    </footer>
+    <script src="comment_rating.js"></script>
+</body>
+</html>
