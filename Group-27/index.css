@@ -82,7 +82,8 @@ nav ul li a:hover {
 }
 
 .text-section {
-    max-width: 40%;
+    padding: 20px;
+    margin-right: 80px;
 }
 
 .text-section h2 {

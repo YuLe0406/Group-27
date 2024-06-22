@@ -20,3 +20,28 @@ $sql = "SELECT manage_orders.order_id, manage_orders.product_id, manage_orders.s
         INNER JOIN manage_products ON manage_orders.product_id = manage_products.product_id";
         
 $result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // Display order details in a table
+    echo "<table border='1'>
+            <tr>
+                <th>Order ID</th>
+                <th>Member ID</th>
+                <th>Product ID</th>
+                <th>Status</th>
+            </tr>";
+    while($row = $result->fetch_assoc()) {
+        echo "<tr>
+                <td>" . $row["order_id"] . "</td>
+                <td>" . $row["member_id"] . "</td>
+                <td>" . $row["product_id"] . "</td>
+                <td>" . $row["status"] . "</td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "0 results";
+}
+
+$conn->close();
+?>
