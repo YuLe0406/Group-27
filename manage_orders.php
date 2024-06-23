@@ -48,8 +48,8 @@
 
             $sql = "SELECT order_id, , member_id, product_id, status 
         FROM manage_orders"
-        INNER JOIN manage_members ON member_id = member_id
-        INNER JOIN manage_products ON product_id = product_id";
+        INNER JOIN manage_members ON manage_orders.member_id = manage_members.member_id
+        INNER JOIN manage_products ON manage_orders.product_id = manage_products.product_id";
 
         $result = $conn->query($sql);
 
