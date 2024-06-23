@@ -30,7 +30,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Actions</th>
+                <th>Password</th>
             </tr>
             <?php
             $servername = "localhost";
@@ -53,7 +53,7 @@
                             <td>" . $row["member_id"] . "</td>
                             <td>" . $row["name"] . "</td>
                             <td>" . $row["email"] . "</td>
-                            <td>" . '*', strlen($row["password"]) . "</td>
+                            <td>" . '*****', strlen($row["password"]) . "</td>
                             <td>
                                 <button>Edit</button>
                                 <button>Delete</button>
