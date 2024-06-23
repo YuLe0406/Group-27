@@ -12,17 +12,25 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $password = $_POST["password"];
 
-    $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
+    $sql = "SELECT * FROM users WHERE username='$username'";
+    $result = $conn->query($sql);
 
-    if ($conn->query($sql) === TRUE) {
-        echo "Signup successful!";
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row["password"])) {
+            $_SESSION["username"] = $username;
+            echo "Login successful!";
+        } else {
+            echo "Invalid password.";
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "No user found.";
     }
 }
 

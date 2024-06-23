@@ -33,38 +33,41 @@
                 <th>Actions</th>
                 
             </tr>
-            <!-- Repeat the following rows as needed -->
-            <tr>
-                <td>1</td>
-                <td>Sport Shoes</td>
-               
-                <td>4</td>
-                <td>
-                    <button>Add</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Sport jerseys</td>
-                <td>4</td>
-                <td>
-                    <button>Add</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Badminton Rackets</td>
-                <td>4</td>
-                <td>
-                    <button>Add</button>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
+
+            <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "pepe_sportshop";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "SELECT category_id, name, total FROM manage_categories";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row["category_id"] . "</td>
+                            <td>" . $row["name"] . "</td>
+                            <td>" . $row["total"] . "</td>
+                            <td>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='4'>No category found</td></tr>";
+            }
+
+            $conn->close();
+         ?>   
+            
         </table>
         <button>Add New Category</button>
     </main>

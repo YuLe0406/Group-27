@@ -32,34 +32,39 @@
                 <th>Role</th>
                 <th>Actions</th>
             </tr>
-            <!-- Repeat the following rows as needed -->
-            <tr>
-                <td>1</td>
-                <td>Zhe Zhe</td>
-                <td>Manager</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Ya Ya</td>
-                <td>Worker</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Hi Hi</td>
-                <td>Worker</td>
-                <td>
-                    <button>Edit</button>
-                    <button>Delete</button>
-                </td>
-            </tr>
+            <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "pepe_sportshop";
+
+            $conn = new mysqli($servername, $username, $password, $dbname);
+
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            
+            $sql = "SELECT staff_id, name, role FROM manage_staff";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row["staff_id"] . "</td>
+                            <td>" . $row["name"] . "</td>
+                            <td>" . $row["role"] . "</td>
+                            <td>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='4'>No staff found</td></tr>";
+            }
+
+            $conn->close();
+         ?>   
         </table>
         <button>Add New Staff</button>
     </main>
