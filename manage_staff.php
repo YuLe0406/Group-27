@@ -48,7 +48,7 @@
             }
 
             // Fetch staff data
-            $sql = "SELECT manage_staff.staff_id, manage_staff.name, manage_staff.role FROM manage_staff";
+            $sql = "SELECT staff_id, name, role FROM manage_staff";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
