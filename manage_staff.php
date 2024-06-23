@@ -68,7 +68,7 @@
             }
 
             $conn->close();
-            
+         ?>   
         </table>
         <button>Add New Staff</button>
     </main>
