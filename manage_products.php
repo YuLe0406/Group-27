@@ -51,7 +51,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>" . $row["staff_id"] . "</td>
+                            <td>" . $row["product_id"] . "</td>
                             <td>" . $row["name"] . "</td>
                             <td>" . $row["price"] . "</td>
                             <td>" . $row["store"] . "</td>
