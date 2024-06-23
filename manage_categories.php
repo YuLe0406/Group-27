@@ -1,22 +1,78 @@
-<?php
-// Database configuration
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "pepe_sportshop";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Categories</title>
+    <link rel="stylesheet" href="manage_categories.css">
+</head>
+<body>
+    <header>
+        <h1>Manage Categories</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="admin_dashboard.html">Dashboard</a></li>
+            <li><a href="manage_staff.html">Manage Staff</a></li>
+            <li><a href="manage_members.html">Manage Members</a></li>
+            <li><a href="manage_categories.html">Manage Categories</a></li>
+            <li><a href="manage_products.html">Manage Products</a></li>
+            <li><a href="manage_orders.html">Manage Orders</a></li>
+            <li><a href="sales_report.html">Sales Report</a></li>
+        </ul>
+    </nav>
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo">
+    </div>
+    <main>
+        <h2>Category List</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Total</th>
+                <th>Actions</th>
+                
+            </tr>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+            <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "pepe_sportshop";
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-// SQL query to get order details along with member ID and product ID
-$sql = "SELECT manage_orders.order_id, manage_orders.product_id, manage_orders.status, manage_members.member_id
-        FROM manage_orders
-        INNER JOIN manage_members ON manage_orders.member_id = manage_members.member_id
-        INNER JOIN manage_products ON manage_orders.product_id = manage_products.product_id";
-        
-$result = $conn->query($sql);
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+
+            $sql = "SELECT category_id, name, total FROM manage_categories";
+            $result = $conn->query($sql);
+
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row["Category_id"] . "</td>
+                            <td>" . $row["name"] . "</td>
+                            <td>" . $row["total"] . "</td>
+                            <td>
+                                <button>Edit</button>
+                                <button>Delete</button>
+                            </td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='4'>No category found</td></tr>";
+            }
+
+            $conn->close();
+         ?>   
+            
+        </table>
+        <button>Add New Category</button>
+    </main>
+    <footer>
+        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
+    </footer>
+</body>
+</html>
