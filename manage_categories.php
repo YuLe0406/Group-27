@@ -52,7 +52,7 @@
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>
-                            <td>" . $row["Category_id"] . "</td>
+                            <td>" . $row["category_id"] . "</td>
                             <td>" . $row["name"] . "</td>
                             <td>" . $row["total"] . "</td>
                             <td>
