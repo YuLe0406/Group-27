@@ -46,10 +46,10 @@
                 die("Connection failed: " . $conn->connect_error);
             }
 
-            $sql = "SELECT manage_orders.order_id, , manage_members.member_id, manage_products.product_id, status 
-        FROM manage_orders"
-        INNER JOIN manage_members ON manage_orders.member_id = manage_members.member_id
-        INNER JOIN manage_products ON manage_orders.product_id = manage_products.product_id";
+            $sql = "SELECT order_id, manage_members.name AS member_name, manage_products.name AS product_name, status 
+                    FROM manage_orders
+                    INNER JOIN manage_members ON manage_orders.member_id = manage_members.member_id
+                    INNER JOIN manage_products ON manage_orders.product_id = manage_products.product_id";
 
         $result = $conn->query($sql);
 
