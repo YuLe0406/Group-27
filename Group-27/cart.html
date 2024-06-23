@@ -14,26 +14,78 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
             <li><a href="products.html">Products</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
             <li><a href="cart.html">Shopping Cart</a></li>
             <li><a href="comment_rating.html">Comments and Ratings</a></li>
         </ul>
     </nav>
     <div class="logo-container">
-        <img src="logo.png" alt="Logo">
+        <a href="index.html">
+            <img src="logo.png" alt="Logo">
+        </a>
     </div>
     <main>
-        <h2>Your Cart</h2>
-        <ul id="cart-list" class="cart-list">
-            <!-- Cart items will be inserted here by JavaScript -->
-        </ul>
-        <p id="total-price">Total: RM0.00</p>
-        <button onclick="clearCart()">Clear Cart</button>
-        <button>Checkout</button>
+        <div class="cart-container">
+            <h2>Your Cart</h2>
+            <div id="cart-items">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-summary">
+                <p id="total-price">Total Price: RM0.00</p>
+                <button onclick="checkout()">Proceed to Checkout</button>
+                <button onclick="clearCart()">Clear All Items</button>
+            </div>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Function to update the total price
+        function updateTotalPrice(cartItems) {
+            let totalPrice = 0;
+            cartItems.forEach(item => {
+                totalPrice += item.price;
+            });
+            document.getElementById('total-price').innerText = `Total Price: RM${totalPrice.toFixed(2)}`;
+        }
+
+        // Function to display cart items on the cart page
+        function displayCartItems() {
+            const cartItems = getCartItems();
+            const cartContainer = document.getElementById('cart-items');
+            cartContainer.innerHTML = '';
+
+            cartItems.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'cart-item';
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <p>${item.name}</p>
+                        <p>Price: RM${item.price}</p>
+                        <p>Size: ${item.size}</p>
+                        <button onclick="removeCartItem(${index})">Remove</button>
+                    </div>
+                `;
+                cartContainer.appendChild(itemElement);
+            });
+
+            updateTotalPrice(cartItems);
+        }
+
+        // Function to handle checkout
+        function checkout() {
+            alert('Proceeding to checkout!');
+            // Add your checkout handling code here
+            // Example: redirect to a checkout page
+            // window.location.href = 'checkout.html';
+        }
+
+        // Call displayCartItems() on page load
+        document.addEventListener('DOMContentLoaded', displayCartItems);
+    </script>
 </body>
 </html>
