@@ -32,9 +32,7 @@
                 <th>Role</th>
                 <th>Actions</th>
             </tr>
-            <!-- Repeat the following rows as needed -->
             <?php
-            // Database connection
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -42,12 +40,10 @@
 
             $conn = new mysqli($servername, $username, $password, $dbname);
 
-            // Check connection
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
-
-            // Fetch staff data
+            
             $sql = "SELECT staff_id, name, role FROM manage_staff";
             $result = $conn->query($sql);
 
