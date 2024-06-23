@@ -3,10 +3,12 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f4;
+
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background-image: url('repeating-chevrons.png');
+    background-size: cover;
 }
 
 header {
@@ -22,6 +24,7 @@ nav ul {
     display: flex;
     justify-content: center;
     background-color: #797e11;
+
 }
 
 nav ul li {
@@ -44,20 +47,19 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px;
+    flex-direction: column;
+    padding: 20px;
     max-width: 1200px;
     margin: auto;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    flex: 1;
 }
 
 .carousel-container {
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-radius: 8px;
+    background-color: white;
+    border-radius: 20px;
+    border-style: groove;
 }
 
 .carousel {
@@ -77,7 +79,6 @@ nav ul li a:hover {
     width: 50%;
     height: auto;
     object-fit: cover;
-    border-radius: 8px;
 }
 
 .text-section {
@@ -118,17 +119,9 @@ nav ul li a:hover {
     color: white;
 }
 
-.get-quote {
-    background-color: #333;
-    color: white;
-}
-
 .shop-now:hover {
     background-color: #e14a26;
-}
-
-.get-quote:hover {
-    background-color: #555;
+    color:#333;
 }
 
 .prev, .next {
@@ -140,7 +133,8 @@ nav ul li a:hover {
     border: none;
     padding: 10px;
     cursor: pointer;
-    border-radius: inherit;
+    border-radius: 100px;
+
 }
 
 .prev {
@@ -151,14 +145,106 @@ nav ul li a:hover {
     right: 10px;
 }
 
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dot {
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+.information {
+    padding: 20px;
+    background-color: white;
+    width: 80%;
+    text-align: center;
+    border-radius: 20px;
+    margin: auto;
+    border-style: groove;
+}
+
+.information h2 {
+    color: #333;
+    margin-bottom: 20px;
+    text-decoration: underline;
+}
+
+.information p {
+    color: #555;
+    margin-bottom: 20px;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+.categories {
+    padding: 50px;
+    width: 55%;
+    text-align: center;    
+    margin: auto;
+}
+
+.categories h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.category-row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.category {
+    flex: 1 1 calc(33.333% - 20px);
+    margin: 10px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-style: groove;
+}
+
+.category img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.category h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.categories a, .categories button{
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+}
+
 footer {
     text-align: center;
     padding: 20px;
     background-color: #80d350;
     color: white;
-    width: 100%;
     flex-shrink: 0;
-    height: 2.5rem;
 }
 
 .logo-container {
