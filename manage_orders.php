@@ -57,8 +57,8 @@
             while($row = $result->fetch_assoc()) {
                 echo "<tr>
                         <td>" . $row["order_id"] . "</td>
-                        <td>" . $row["member_id"] . "</td>
-                        <td>" . $row["product_id"] . "</td>
+                        <td>" . $row["member_name"] . "</td>
+                        <td>" . $row["product_name"] . "</td>
                         <td>" . $row["status"] . "</td>
                         <td>
                             <button>Edit</button>
