@@ -32,7 +32,7 @@
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
-            <!-- Repeat the following rows as needed -->
+
             <?php
             $servername = "localhost";
             $username = "root";
@@ -67,8 +67,6 @@
 
             $conn->close();
          ?>   
-
-            ?>
         </table>
         <button>Add New Product</button>
     </main>
