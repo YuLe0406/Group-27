@@ -19,5 +19,5 @@ function moveSlide(step) {
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
-    setInterval(() => moveSlide(1), 3500); // Automatically move to the next slide every 3.5 seconds
+    setInterval(() => moveSlide(1), 5000); // Automatically move to the next slide every 5 seconds
 });
