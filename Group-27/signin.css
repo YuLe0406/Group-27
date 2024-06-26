@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: url('radiant-gradient.png');
+    background: url('repeating-chevrons.png');
     background-size: cover;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
@@ -44,7 +44,7 @@ input[type="email"] {
 button {
     width: 100%;
     padding: 10px;
-    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    background: linear-gradient(to right, #75e3ff, #9cff7e);
     border: none;
     color: white;
     border-radius: 5px;
@@ -54,7 +54,7 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(to right, #ff7eb3, #ff758c);
+    background: linear-gradient(to right, #9cff7e, #75e3ff);
 }
 
 .social-login {
@@ -76,23 +76,23 @@ button:hover {
 }
 
 .signin-link {
-    color: #ff758c;
+    color: #9cff7e;
     text-decoration: none;
     font-weight: bold;
 }
 
 .signin-link:hover {
-    color: #ff7eb3;
+    color: #75e3ff;
 }
 
 .signup-link {
-    color: #ff758c;
+    color: #83cc6d;
     text-decoration: none;
     font-weight: bold;
 }
 
 .signup-link:hover {
-    color: #ff7eb3;
+    color: #75e3ff;
 }
 
 .forgot-password {
