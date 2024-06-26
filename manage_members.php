@@ -31,6 +31,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Password</th>
+                <th>Actions</th>
             </tr>
             <?php
             $conn= mysqli_connect("localhost","root","","pepe_sportshop");
