@@ -31,14 +31,10 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Password</th>
+                <th>Actions</th>
             </tr>
             <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "pepe_sportshop";
-
-            $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn= mysqli_connect("localhost","root","","pepe_sportshop");
 
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
@@ -53,7 +49,7 @@
                             <td>" . $row["member_id"] . "</td>
                             <td>" . $row["name"] . "</td>
                             <td>" . $row["email"] . "</td>
-                            <td>" . '*****', strlen($row["password"]) . "</td>
+                            <td>********</td>
                             <td>
                                 <button>Edit</button>
                                 <button>Delete</button>
