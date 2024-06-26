@@ -48,7 +48,7 @@
                             <td>" . $row["member_id"] . "</td>
                             <td>" . $row["name"] . "</td>
                             <td>" . $row["email"] . "</td>
-                            <td>" . '*****', strlen($row["password"]) . "</td>
+                            <td>********</td>
                             <td>
                                 <button>Edit</button>
                                 <button>Delete</button>
