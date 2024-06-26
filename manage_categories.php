@@ -51,8 +51,8 @@
                             <td>" . $row["name"] . "</td>
                             <td>" . $row["total"] . "</td>
                             <td>
-                                <button>Edit</button>
-                                <button>Delete</button>
+                                <a href='categoryedit.php?edit&catid=" . $row['category_id'] . "'><button>Edit</button></a>
+                                <a href='categorydelete.php?edit&catid=" . $row['category_id'] . "'><button>Delete</button></a
                             </td>
                           </tr>";
                 }
