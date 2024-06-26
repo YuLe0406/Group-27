@@ -30,6 +30,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Price</th>
+                <th>Store</th>
                 <th>Actions</th>
             </tr>
 
