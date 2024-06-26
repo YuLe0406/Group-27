@@ -35,7 +35,7 @@
             </tr>
 
             <?php
-            $connect= mysqli_connect("localhost","root","","pepe_sportshop");
+            $conn= mysqli_connect("localhost","root","","pepe_sportshop");
 
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
