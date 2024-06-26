@@ -20,7 +20,7 @@
             <li><a href="sales_report.php">Sales Report</a></li>
         </ul>
     </nav>
-    <div class="logo-container">
+    <div class="logo">
         <img src="logo.png" alt="Logo">
     </div>
     <main>
