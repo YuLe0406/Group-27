@@ -12,15 +12,15 @@
     <nav>
         <ul>
             <li><a href="admin_dashboard.html">Dashboard</a></li>
-            <li><a href="manage_staff.html">Manage Staff</a></li>
-            <li><a href="manage_members.html">Manage Members</a></li>
-            <li><a href="manage_categories.html">Manage Categories</a></li>
-            <li><a href="manage_products.html">Manage Products</a></li>
-            <li><a href="manage_orders.html">Manage Orders</a></li>
-            <li><a href="sales_report.html">Sales Report</a></li>
+            <li><a href="manage_staff.php">Manage Staff</a></li>
+            <li><a href="manage_members.php">Manage Members</a></li>
+            <li><a href="manage_categories.php">Manage Categories</a></li>
+            <li><a href="manage_products.php">Manage Products</a></li>
+            <li><a href="manage_orders.php">Manage Orders</a></li>
+            <li><a href="sales_report.php">Sales Report</a></li>
         </ul>
     </nav>
-    <div class="logo-container">
+    <div class="logo">
         <img src="logo.png" alt="Logo">
     </div>
     <main>
