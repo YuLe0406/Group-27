@@ -11,13 +11,25 @@ function showSlide(index) {
     }
     const offset = -currentSlide * 100;
     document.querySelector('.carousel').style.transform = `translateX(${offset}%)`;
+    updatePagination();
 }
 
 function moveSlide(step) {
     showSlide(currentSlide + step);
 }
 
+function currentSlideIndex(index) {
+    showSlide(index);
+}
+
+function updatePagination() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
-    setInterval(() => moveSlide(1), 3500); // Automatically move to the next slide every 3.5 seconds
+    setInterval(() => moveSlide(1), 6000); // Automatically move to the next slide every 6 seconds
 });
