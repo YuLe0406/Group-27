@@ -7,12 +7,14 @@
 <div id="wrapper">
  
 		<?php
+        $conn= mysqli_connect("localhost","root","","pepe_sportshop");
+
 		if(isset($_GET["edit"]))
 		{
 		 
 			$catid = $_GET["catid"];
  
-			$result = mysqli_query($connect, "SELECT * from manage_catagories where category_id = $catid");
+			$result = mysqli_query($conn, "SELECT * from manage_catagories where category_id = $catid");
 			$row = mysqli_fetch_assoc($result);
 		?>
 		
