@@ -14,7 +14,7 @@
 		 
 			$catid = $_GET["catid"];
  
-			$result = mysqli_query($conn, "SELECT * from manage_catagories where category_id = $catid");
+			$result = mysqli_query($conn, "SELECT * FROM manage_categories WHERE category_id = $catid");
 			$row = mysqli_fetch_assoc($result);
 		?>
 		
@@ -24,7 +24,7 @@
  
         <form name="editfrm" method="post" action="">   
 
-        <p><label>Category Name:</label><input type="text" name="category_name" size="80" value="<?php echo $row['category_name']; ?>"></p>
+        <p><label>Category Name:</label><input type="text" name="category_name" size="80" value="<?php echo $row['name']; ?>"></p>
 
         <p><label>Total:</label><input type="number" name="total" size="80" value="<?php echo $row['total']; ?>"></p>
 
@@ -48,13 +48,13 @@
     $category_name = $_POST["category_name"];
     $total = $_POST["total"];
     
-    mysqli_query($connect, "UPDATE manage_categories SET category_name='$category_name', total=$total WHERE category_id=$catid");
+    mysqli_query($conn, "UPDATE manage_categories SET name='$category_name', total=$total WHERE category_id=$catid");
     ?>
     <script type="text/javascript">
         alert("Category Updated");
     </script>
     <?php
-    header("refresh:0.5; url=category_list.php");
+    header("refresh:0.5; url=manage_categories.php");
 }
  
 ?>
