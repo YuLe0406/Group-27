@@ -3,7 +3,11 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    background: url('background.png');
+    background-size: cover;
 }
+
+
 
 header {
     background-color: beige; /* Change background color to beige */
