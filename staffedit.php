@@ -26,7 +26,7 @@
 
         <p><label>Category Name:</label><input type="text" name="category_name" size="80" value="<?php echo $row['name']; ?>"></p>
 
-        <p><label>Total:</label><input type="text" name="total" size="80" value="<?php echo $row['total']; ?>"></p>
+        <p><label>Total:</label><input type="number" name="total" size="80" value="<?php echo $row['total']; ?>"></p>
 
         <p><input type="submit" name="savebtn" value="UPDATE CATEGORY"></p>
  
