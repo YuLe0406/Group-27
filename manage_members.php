@@ -51,7 +51,7 @@
                             <td>" . $row["email"] . "</td>
                             <td>********</td>
                             <td>
-                                <button>Edit</button>
+                                <a href='memberedit.php?edit&memid=" . $row['member_id'] . "'><button>Edit</button></a>
                                 <button>Delete</button>
                             </td>
                           </tr>";
