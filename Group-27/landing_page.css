@@ -1,47 +1,100 @@
-body.landing-page {
-    font-family: Arial, sans-serif;
-    background-image: url('background_image.jpg');
-    background-size: cover;
-    background-position: center;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: white; /* Make text white for better contrast against the background */
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Add a subtle shadow for better readability */
+    background-image: url('repeating-chevrons.png');
+    background-size: cover;
 }
 
+.role{
+    position: absolute;
+    top: 300px; 
+}
 .container {
     text-align: center;
-    background: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background for better readability */
-    padding: 20px;
-    border-radius: 10px;
 }
 
-h1 {
-    margin-bottom: 40px;
-}
-
-.button-container {
+.selection {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.selection-button {
-    background-color: #333;
-    color: white;
+.btn {
     padding: 20px 40px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
+    font-size: 50px;
+    font-weight: 700;
+    border:#333;
+    border-radius: 50px;
+    background-color: #2db937;
+    color: #f3f3f3;
     cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
+    transition: transform 0.3s;
 }
 
-.selection-button:hover {
-    background-color: #555;
-    transform: scale(1.05);
+.btn:hover {
+    transform: scale(1.1);
+    background-color: black;
+    color:beige;
+}
+
+.loading-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.loading-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loading-content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #13d420;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.logo-container {
+    position: absolute;
+    top: 10px; 
+    
+}
+
+.logo-container img {
+    width: 200px;
+    height: auto;
 }
