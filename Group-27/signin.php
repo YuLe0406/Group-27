@@ -47,6 +47,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    if (isset($_POST['sign_in'])) {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        // Simple validation (you can enhance this)
+        if (empty($email) || empty($password)) {
+            echo "All fields are required!";
+            exit;
+        }
+
         // Retrieve the user from the database
         $sql = "SELECT * FROM manage_members WHERE email='$email' AND password='$password'";
         $result = $conn->query($sql);
@@ -60,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $conn->close();
-
+}
 ?>
 
     <div class="container" id="container">
@@ -90,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button class="hidden" id="login">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Welcome to PEPE Sport</h1>
+                    <h1>Welcome to PEPE Sgo</h1>
                     <p>Not a member? Sign Up Now!</p>
                     <button class="hidden" id="register">Sign Up</button>
                 </div>
