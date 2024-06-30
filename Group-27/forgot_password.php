@@ -25,29 +25,32 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+$error_message = ""; // Variable to store error messages
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $new_password = $_POST["new_password"];
     $confirm_password = $_POST["confirm_password"];
 
-    // Simple validation (you can enhance this)
-    if (empty($email) || empty($new_password) || empty($confirm_password)) {
-        echo "All fields are required!";
-        exit;
-    }
-
     if ($new_password !== $confirm_password) {
-        echo "Passwords do not match!";
-        exit;
-    }
-
-    // Update the password in the database
-    $sql = "UPDATE manage_members SET password='$new_password' WHERE email='$email'";
-    
-    if ($conn->query($sql) === TRUE) {
-        echo "Password updated successfully";
+        $error_message = "Passwords do not match!";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        // Check if email exists in the database
+        $sql = "SELECT * FROM manage_members WHERE email='$email'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Update the password in the database
+            $sql = "UPDATE manage_members SET password='$new_password' WHERE email='$email'";
+            
+            if ($conn->query($sql) === TRUE) {
+                $error_message = "Password updated successfully";
+            } else {
+                $error_message = "Error updating password: " . $conn->error;
+            }
+        } else {
+            $error_message = "Email not found!";
+        }
     }
 
     $conn->close();
@@ -59,9 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="forgot_password.php" method="POST">
                 <h1>Reset Password</h1>
                 <span>Enter your email and new password</span>
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="new_password" placeholder="New Password">
-                <input type="password" name="confirm_password" placeholder="Confirm Password">
+                <?php if (!empty($error_message)) { echo "<p class='error'>$error_message</p>"; } ?>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="new_password" placeholder="New Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                 <button type="submit">Reset Password</button>
                 <button type="button" onclick="window.location.href='signin.php'">Return to Sign In</button>
             </form>
