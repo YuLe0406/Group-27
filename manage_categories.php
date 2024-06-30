@@ -5,6 +5,7 @@
     <title>Manage Categories</title>
     <link rel="stylesheet" href="manage_categories.css">
 </head>
+
 <body>
     <header>
         <h1>Manage Categories</h1>
@@ -46,14 +47,17 @@
 
             if ($result->num_rows > 0) {
                 while($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row["category_id"] . "</td>
-                            <td>" . $row["name"] . "</td>
-                            <td>" . $row["total"] . "</td>
+
+                    ?>
+                    <tr>
+                            <td><?php echo $row["category_id"]; ?></td>
+                            <td><?php echo $row["name"]; ?></td>
+                            <td><?php echo $row["total"]; ?></td>
                             <td>
-                                <a href='categoryedit.php?edit&catid=" . $row['category_id'] . "'><button>Edit</button></a>
-                                <button>Delete</button>
+                                <a href='categoryedit.php?edit&catid=<?php echo $row['category_id']; ?>"'><button>Edit</button></a>
+                                <a href='manage_category.php?delete&catid=<?php echo $row['category_id']; ?>"' onclick="return confirm();"><button>Delete</button></a>
                           </tr>";
+            <?php
                 }
             } else {
                 echo "<tr><td colspan='4'>No category found</td></tr>";
@@ -70,3 +74,24 @@
     </footer>
 </body>
 </html>
+
+<?php
+if (isset($_REQUEST["del"])) 
+{
+	$catid = $_REQUEST["catid"]; 
+	mysqli_query($conn, "delete from movie where category_id = $catid");
+	
+	header("Location: manage_categories.php");
+}
+ 
+?>
+
+<script type="text/javascript">
+
+function confirmation()
+{
+	answer = confirm("Do you want to delete this category?");
+	return answer;
+}
+ 
+</script>
