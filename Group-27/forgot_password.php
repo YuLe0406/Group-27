@@ -59,9 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="forgot_password.php" method="POST">
                 <h1>Reset Password</h1>
                 <span>Enter your email and new password</span>
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="new_password" placeholder="New Password">
-                <input type="password" name="confirm_password" placeholder="Confirm Password">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="new_password" placeholder="New Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                 <button type="submit">Reset Password</button>
                 <button type="button" onclick="window.location.href='signin.php'">Return to Sign In</button>
             </form>
