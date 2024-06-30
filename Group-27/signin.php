@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="sample.css">
-    <title>pepe sport shop</title>
+    <title>PEPE Sport Shop</title>
 </head>
 
 <body>
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button class="hidden" id="login">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Hello, Friend!</h1>
+                    <h1>Welcome to PEPE Sport Shop!</h1>
                     <p>Not a member? Sign Up Now!</p>
                     <button class="hidden" id="register">Sign Up</button>
                 </div>
