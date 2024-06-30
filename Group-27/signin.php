@@ -77,17 +77,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-container sign-up">
             <form action="signin.php" method="POST">
                 <h1>Create Account</h1>
-                <input type="text" name="username" placeholder="Username">
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Password">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
                 <button type="submit" name="sign_up">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
             <form action="signin.php" method="POST">
                 <h1>Sign In</h1>
-                <input type="email" name="email" placeholder="Email">
-                <input type="password" name="password" placeholder="Password">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
                 <a href="forgot_password.php">Forgot Your Password?</a>
                 <button type="submit" name="sign_in">Sign In</button>
             </form>
