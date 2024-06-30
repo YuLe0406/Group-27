@@ -47,15 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    if (isset($_POST['sign_in'])) {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        // Simple validation (you can enhance this)
-        if (empty($email) || empty($password)) {
-            echo "All fields are required!";
-        }
-
         // Retrieve the user from the database
         $sql = "SELECT * FROM manage_members WHERE email='$email' AND password='$password'";
         $result = $conn->query($sql);
