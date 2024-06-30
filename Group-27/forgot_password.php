@@ -39,8 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM manage_members WHERE email='$email'";
         $result = $conn->query($sql);
 
-        if (!empty($error_message)) { echo "<p class='error'>$error_message</p>";}
-
         if ($result->num_rows > 0) {
             // Update the password in the database
             $sql = "UPDATE manage_members SET password='$new_password' WHERE email='$email'";
@@ -64,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="forgot_password.php" method="POST">
                 <h1>Reset Password</h1>
                 <span>Enter your email and new password</span>
+                <?php if (!empty($error_message)) { echo "<p class='error'>$error_message</p>"; } ?>
                 <input type="email" name="email" placeholder="Email" required>
                 <input type="password" name="new_password" placeholder="New Password" required>
                 <input type="password" name="confirm_password" placeholder="Confirm Password" required>
