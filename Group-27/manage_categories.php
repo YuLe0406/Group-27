@@ -31,67 +31,55 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Total</th>
-                <th>Actions</th>
-                
+                <th colspan="3">Actions</th>       
             </tr>
 
             <?php
-            $conn= mysqli_connect("localhost","root","","pepe_sportshop");
-
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT category_id, name, total FROM manage_categories";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-
-                    ?>
-                    <tr>
-                            <td><?php echo $row["category_id"]; ?></td>
-                            <td><?php echo $row["name"]; ?></td>
-                            <td><?php echo $row["total"]; ?></td>
-                            <td>
-                                <a href='categoryedit.php?edit&catid=<?php echo $row['category_id']; ?>"'><button>Edit</button></a>
-                                <a href='manage_category.php?delete&catid=<?php echo $row['category_id']; ?>"' onclick="return confirm();"><button>Delete</button></a>
-                          </tr>";
+            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+            $result = mysqli_query($conn, "SELECT * FROM manage_categories");	
+            
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <tr>
+                    <td><?php echo $row["category_id"]; ?></td>
+                    <td><?php echo $row["name"]; ?></td>
+                    <td><?php echo $row["total"]; ?></td>
+                    <td>
+                        <a href='categoryedit.php?edit&catid=<?php echo $row["category_id"]; ?>'><button>Edit</button></a>
+                        <a href='manage_categories.php?del&catid=<?php echo $row["category_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
+                    </td>
+                </tr>
             <?php
-                }
-            } else {
-                echo "<tr><td colspan='4'>No category found</td></tr>";
             }
-
-            $conn->close();
-         ?>   
+            ?>   
             
         </table>
-        <button>Add New Category</button>
+        <form method="post" action="">
+        <button type="submit" name="add">Add New Category</button>
+        </form>
+
     </main>
     <footer>
-        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
+
+    <script type="text/javascript">
+        function confirmation() {
+            return confirm("Do you want to delete this category?");
+        }
+    </script>
 </body>
 </html>
 
 <?php
-if (isset($_REQUEST["del"])) 
-{
-	$catid = $_REQUEST["catid"]; 
-	mysqli_query($conn, "delete from movie where category_id = $catid");
-	
-	header("Location: manage_categories.php");
+if (isset($_REQUEST["del"])) {
+    $catid = $_REQUEST["catid"]; 
+    mysqli_query($conn, "DELETE FROM manage_categories WHERE category_id = $catid");
+    header("Location: manage_categories.php");
 }
- 
+
+
+if (isset($_POST["add"])) {
+    header("Location: categoryadd.php");
+}
 ?>
-
-<script type="text/javascript">
-
-function confirmation()
-{
-	answer = confirm("Do you want to delete this category?");
-	return answer;
-}
- 
-</script>
