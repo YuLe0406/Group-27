@@ -30,9 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = $_POST["new_password"];
     $confirm_password = $_POST["confirm_password"];
 
-    // Simple validation (you can enhance this)
-    if (empty($email) || empty($new_password) || empty($confirm_password)) {
-        echo "All fields are required!";
+    if ($email!== $email){
+        echo "Email does not exist!";
         exit;
     }
 
