@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <button class="hidden" id="login">Sign In</button>
                 </div>
                 <div class="toggle-panel toggle-right">
-                    <h1>Welcome to PEPE Sgo</h1>
+                    <h1>Welcome to PEPE Sport Shop!</h1>
                     <p>Not a member? Sign Up Now!</p>
                     <button class="hidden" id="register">Sign Up</button>
                 </div>
