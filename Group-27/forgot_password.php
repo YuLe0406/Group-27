@@ -39,6 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "SELECT * FROM manage_members WHERE email='$email'";
         $result = $conn->query($sql);
 
+        if (!empty($error_message)) { echo "<p class='error'>$error_message</p>";}
+
         if ($result->num_rows > 0) {
             // Update the password in the database
             $sql = "UPDATE manage_members SET password='$new_password' WHERE email='$email'";
