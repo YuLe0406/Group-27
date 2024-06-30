@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (!empty($error_message)) 
             { echo "<p class='error'>$error_message</p>";
+            }
 
         if ($result->num_rows > 0) {
             // Update the password in the database
