@@ -57,12 +57,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-    <div class="container" id="container">
+    <<div class="container" id="container">
         <div class="form-container reset-password">
             <form action="forgot_password.php" method="POST">
                 <h1>Reset Password</h1>
                 <span>Enter your email and new password</span>
-                <input type="email" name="email" placeholder="Email" required>
+                <?php if (!empty($error_message)) { echo "<p class='error-message'>$error_message</p>"; } ?>
+                <div>
+                    <input type="email" name="email" placeholder="Email" required 
+                           class="<?php if (!empty($email_error)) { echo 'error-input'; } ?>">
+                    <?php if (!empty($email_error)) { echo "<p class='error-message'>$email_error</p>"; } ?>
+                </div>
                 <input type="password" name="new_password" placeholder="New Password" required>
                 <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                 <button type="submit">Reset Password</button>
