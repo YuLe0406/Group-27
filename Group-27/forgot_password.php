@@ -30,12 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = $_POST["new_password"];
     $confirm_password = $_POST["confirm_password"];
 
-    if ($email!== $_POST["email"]){
-        echo "Email does not exist!";
-        exit;
-    }
-
-
+    
     if ($new_password !== $confirm_password) {
         echo "Passwords do not match!";
         exit;
