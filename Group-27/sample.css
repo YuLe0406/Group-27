@@ -61,11 +61,6 @@ body{
     cursor: pointer;
 }
 
-.container button :hover{
-    background-color: tomato;
-
-}
-
 .container button.hidden{
     background-color: transparent;
     border-color: #fff;

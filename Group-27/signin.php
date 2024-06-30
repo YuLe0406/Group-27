@@ -54,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Simple validation (you can enhance this)
         if (empty($email) || empty($password)) {
             echo "All fields are required!";
-            exit;
         }
 
         // Retrieve the user from the database
