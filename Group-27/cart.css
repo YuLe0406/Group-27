@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f4;
+    background-image: url("repeating-chevrons.png");
+    background-size: cover;
 }
 
 header {
@@ -45,14 +46,14 @@ main {
     border-radius: 8px;
 }
 
-.cart-list {
-    list-style-type: none;
-    padding: 0;
+.cart-container {
+    padding: 20px;
 }
 
 .cart-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
     background-color: #f9f9f9;
     padding: 10px;
@@ -61,20 +62,14 @@ main {
 }
 
 .cart-item img {
-    width: 80px;
+    width: 300px;
     height: auto;
     border-radius: 8px;
     margin-right: 20px;
 }
 
-.cart-item-name {
+.cart-item-info {
     flex-grow: 1;
-    font-size: 18px;
-}
-
-.cart-item-price {
-    font-size: 18px;
-    margin-right: 20px;
 }
 
 .cart-item-quantity {
@@ -102,12 +97,25 @@ main {
     text-align: center;
 }
 
+button {
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background-color: #5cb85c;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
 footer {
     text-align: center;
     padding: 20px;
     background-color: #80d350;
     color: white;
-    margin-bottom: auto;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
 }
 
 .logo-container {

@@ -244,7 +244,9 @@ footer {
     padding: 20px;
     background-color: #80d350;
     color: white;
-    flex-shrink: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;   
 }
 
 .logo-container {

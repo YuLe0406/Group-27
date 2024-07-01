@@ -22,3 +22,4 @@ document.getElementById('commentForm').addEventListener('submit', function(event
     // Clear the form
     document.getElementById('commentForm').reset();
 });
+    

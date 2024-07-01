@@ -1,9 +1,10 @@
 body {
-    font-family: Arial, sans-serif;
+    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: Arial, sans-serif;
+    background-image: url("repeating-chevrons.png");
+    background-size: cover;
 }
 
 header {
@@ -40,6 +41,8 @@ main {
     padding: 2rem;
     max-width: 700px;
     margin: 0 auto;
+    flex: 1 0 auto; /* This makes the main content area grow and shrink as necessary */
+    padding-bottom: 70px; /* Add bottom padding to main content area */
 }
 
 .comment-form-section, .comments-section {
@@ -47,8 +50,7 @@ main {
     padding: 20px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-
+    border-radius: 15px;
 }
 
 h2 {
@@ -107,8 +109,9 @@ footer {
     background-color: #80d350;
     color: #fff;
     text-align: center;
-    padding: 1rem 0;
-    width: 100%;
+    padding: 20px;
+    width: auto;
+    flex-shrink: 0; /* This ensures the footer stays at the bottom */
 }
 
 .logo-container {
