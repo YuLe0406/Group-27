@@ -5,13 +5,14 @@
     <title>Manage Staff</title>
     <link rel="stylesheet" href="manage_staff.css">
 </head>
+
 <body>
     <header>
         <h1>Manage Staff</h1>
     </header>
     <nav>
         <ul>
-        <li><a href="admin_dashboard.html">Dashboard</a></li>
+            <li><a href="admin_dashboard.html">Dashboard</a></li>
             <li><a href="manage_staff.php">Manage Staff</a></li>
             <li><a href="manage_members.php">Manage Members</a></li>
             <li><a href="manage_categories.php">Manage Categories</a></li>
@@ -32,39 +33,50 @@
                 <th>Role</th>
                 <th>Actions</th>
             </tr>
+
             <?php
-            $conn= mysqli_connect("localhost","root","","pepe_sportshop");
+            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+            $result = mysqli_query($conn, "SELECT * FROM manage_staff");
 
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <tr>
+                    <td><?php echo $row["staff_id"]; ?></td>
+                    <td><?php echo $row["name"]; ?></td>
+                    <td><?php echo $row["role"]; ?></td>
+                    <td>
+                        <a href='staffedit.php?edit&staffid=<?php echo $row["staff_id"]; ?>'><button>Edit</button></a>
+                        <a href='manage_staff.php?del&staffid=<?php echo $row["staff_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
+                    </td>
+                </tr>
+            <?php
             }
-            
-            $sql = "SELECT staff_id, name, role FROM manage_staff";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row["staff_id"] . "</td>
-                            <td>" . $row["name"] . "</td>
-                            <td>" . $row["role"] . "</td>
-                            <td>
-                                <button>Edit</button>
-                                <button>Delete</button>
-                            </td>
-                          </tr>";
-                }
-            } else {
-                echo "<tr><td colspan='4'>No staff found</td></tr>";
-            }
-
-            $conn->close();
-         ?>   
+            ?>
         </table>
-        <button>Add New Staff</button>
+        <form method="post" action="">
+            <button type="submit" name="add">Add New Staff</button>
+        </form>
     </main>
     <footer>
-        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
+
+    <script type="text/javascript">
+        function confirmation() {
+            return confirm("Do you want to delete this staff member?");
+        }
+    </script>
 </body>
 </html>
+
+<?php
+if (isset($_REQUEST["del"])) {
+    $staffid = $_REQUEST["staffid"];
+    mysqli_query($conn, "DELETE FROM manage_staff WHERE staff_id = $staffid");
+    header("Location: manage_staff.php");
+}
+
+if (isset($_POST["add"])) {
+    header("Location: staffadd.php");
+}
+?>

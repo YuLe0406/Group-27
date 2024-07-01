@@ -31,7 +31,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Total</th>
-                <th colspan="3">Actions</th>       
+                <th>Actions</th>       
             </tr>
 
             <?php
