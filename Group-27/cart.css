@@ -107,6 +107,7 @@ footer {
     padding: 20px;
     background-color: #80d350;
     color: white;
+    flex-shrink: 0;
 }
 
 .logo-container {
