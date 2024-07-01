@@ -12,15 +12,13 @@
 		if(isset($_GET["edit"]))
 		{
 		 
-			$catid = $_GET["catid"];
+			$ordid = $_GET["ordid"];
  
-			$result = mysqli_query($conn, "SELECT * FROM manage_categories WHERE category_id = $catid");
+			$result = mysqli_query($conn, "SELECT * FROM manage_orders WHERE order_id = $ordid");
 			$row = mysqli_fetch_assoc($result);
 		?>
 		
-		<h1>Edit Category</h1>
- 
-		<form name="addfrm" method="post" action="">
+		<h1>Edit Order</h1>
  
         <form name="editfrm" method="post" action="">   
 

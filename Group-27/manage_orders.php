@@ -20,7 +20,7 @@
             <li><a href="sales_report.php">Sales Report</a></li>
         </ul>
     </nav>
-    <div class="logo-container">
+    <div class="logo">
         <img src="logo.png" alt="Logo">
     </div>
     <main>
@@ -31,47 +31,49 @@
                 <th>Member ID</th>
                 <th>Product ID</th>
                 <th>Status</th>
-                <th>Actions</th>
+                <th colspan="3">Actions</th>
             </tr>
 
+            
             <?php
-            $conn= mysqli_connect("localhost","root","","pepe_sportshop");
-
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-
-            $sql = "SELECT order_id, manage_members.name AS member_name, manage_products.name AS product_name, status 
-                    FROM manage_orders
-                    INNER JOIN manage_members ON manage_orders.member_id = manage_members.member_id
-                    INNER JOIN manage_products ON manage_orders.product_id = manage_products.product_id";
-
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while($row = $result->fetch_assoc()) {
-                echo "<tr>
-                        <td>" . $row["order_id"] . "</td>
-                        <td>" . $row["member_name"] . "</td>
-                        <td>" . $row["product_name"] . "</td>
-                        <td>" . $row["status"] . "</td>
+            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+            $result = mysqli_query($conn, "SELECT * FROM manage_orders");	
+            
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <tr>
+                        <td><?php echo $row["order_id"]?></td>
+                        <td><?php echo $row["member_id"]?></td>
+                        <td><?php echo $row["product_id"]?></td>
+                        <td><?php echo $row["status"]?></td>
                         <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                        <a href='orderedit.php?edit&ordid=<?php echo $row["order_id"]; ?>'><button>Edit</button></a>
+                        <a href='orderdelete.php?del&ordid=<?php echo $row["order_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
                         </td>
-                      </tr>";
-            }
-        } else {
-            echo "<tr><td colspan='5'>No orders found</td></tr>";
-        }
+                      </tr>
+            <?php
+                    }
+            ?>   
+            
+                </table>
 
-        $conn->close();
-        ?>
-    
-        </table>
-    </main>
+        </main>
     <footer>
-        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
+
+    <script type="text/javascript">
+        function confirmation() {
+            return confirm("Do you want to delete this order?");
+        }
+    </script>
 </body>
 </html>
+
+<?php
+if (isset($_REQUEST["del"])) {
+    $ordid = $_REQUEST["ordid"]; 
+    mysqli_query($conn, "DELETE FROM manage_orders WHERE order_id = $ordid");
+    header("Location: manage_orders.php");
+}
+
