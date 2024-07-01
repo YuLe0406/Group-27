@@ -5,6 +5,7 @@
     <title>Manage Members</title>
     <link rel="stylesheet" href="manage_members.css">
 </head>
+
 <body>
     <header>
         <h1>Manage Members</h1>
@@ -30,44 +31,45 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Password</th>
                 <th>Actions</th>
             </tr>
+
             <?php
-            $conn= mysqli_connect("localhost","root","","pepe_sportshop");
+            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+            $result = mysqli_query($conn, "SELECT * FROM manage_members");
 
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <tr>
+                    <td><?php echo $row["member_id"]; ?></td>
+                    <td><?php echo $row["name"]; ?></td>
+                    <td><?php echo $row["email"]; ?></td>
+                    <td>
+                        <a href='manage_members.php?del&memberid=<?php echo $row["member_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
+                    </td>
+                </tr>
+            <?php
             }
+            ?>
 
-            $sql = "SELECT member_id, name, email, password FROM manage_members";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row["member_id"] . "</td>
-                            <td>" . $row["name"] . "</td>
-                            <td>" . $row["email"] . "</td>
-                            <td>********</td>
-                            <td>
-                                <a href='memberedit.php?edit&memid=" . $row['member_id'] . "'><button>Edit</button></a>
-                                <button>Delete</button>
-                            </td>
-                          </tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5'>No product found</td></tr>";
-            }
-
-            $conn->close();
-         ?>   
         </table>
-        <button>Add New Member</button>
     </main>
     <footer>
-        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
-    
+
+    <script type="text/javascript">
+        function confirmation() {
+            return confirm("Do you want to delete this member?");
+        }
+    </script>
 </body>
 </html>
+
+<?php
+if (isset($_REQUEST["del"])) {
+    $memberid = $_REQUEST["memberid"];
+    mysqli_query($conn, "DELETE FROM manage_members WHERE member_id = $memberid");
+    header("Location: manage_members.php");
+}
+?>
