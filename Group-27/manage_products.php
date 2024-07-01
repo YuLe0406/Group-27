@@ -5,13 +5,14 @@
     <title>Manage Products</title>
     <link rel="stylesheet" href="manage_products.css">
 </head>
+
 <body>
     <header>
         <h1>Manage Products</h1>
     </header>
     <nav>
         <ul>
-        <li><a href="admin_dashboard.html">Dashboard</a></li>
+            <li><a href="admin_dashboard.html">Dashboard</a></li>
             <li><a href="manage_staff.php">Manage Staff</a></li>
             <li><a href="manage_members.php">Manage Members</a></li>
             <li><a href="manage_categories.php">Manage Categories</a></li>
@@ -31,43 +32,58 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Store</th>
-                <th>Actions</th>
+                <th>Category</th>
+                <th>Actions</th>       
             </tr>
 
             <?php
-            $conn= mysqli_connect("localhost","root","","pepe_sportshop");
-
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
+            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+            $result = mysqli_query($conn, "SELECT p.*, c.name as category_name FROM manage_products p LEFT JOIN manage_categories c ON p.category_id = c.category_id");	
+            
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <tr>
+                    <td><?php echo $row["product_id"]; ?></td>
+                    <td><?php echo $row["name"]; ?></td>
+                    <td><?php echo $row["price"]; ?></td>
+                    <td><?php echo $row["store"]; ?></td>
+                    <td><?php echo $row["category_name"]; ?></td>
+                    <td>
+                        <a href='productedit.php?edit&prodid=<?php echo $row["product_id"]; ?>'><button>Edit</button></a>
+                        <a href='manage_products.php?del&prodid=<?php echo $row["product_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
+                    </td>
+                </tr>
+            <?php
             }
-
-            $sql = "SELECT product_id, name, price, store FROM manage_products";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>
-                            <td>" . $row["product_id"] . "</td>
-                            <td>" . $row["name"] . "</td>
-                            <td>" . $row["price"] . "</td>
-                            <td>" . $row["store"] . "</td>
-                            <td>
-                                <button>Edit</button>
-                                <button>Delete</button>
-                            </td>
-                          </tr>";
-                }
-            } else {
-                echo "<tr><td colspan='5'>No product found</td></tr>";
-            }
-
-            $conn->close();
-         ?>   
+            ?>   
+            
         </table>
-        <button>Add New Product</button>
+        <form method="post" action="">
+        <button type="submit" name="add">Add New Product</button>
+        </form>
+
     </main>
     <footer>
-        <p>&copy; 2024 PEPE Sport Shop. All right reserved.</p>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
+
+    <script type="text/javascript">
+        function confirmation() {
+            return confirm("Do you want to delete this product?");
+        }
+    </script>
 </body>
 </html>
+
+<?php
+if (isset($_REQUEST["del"])) {
+    $prodid = $_REQUEST["prodid"]; 
+    mysqli_query($conn, "DELETE FROM manage_products WHERE product_id = $prodid");
+    header("Location: manage_products.php");
+}
+
+
+if (isset($_POST["add"])) {
+    header("Location: productadd.php");
+}
+?>
