@@ -14,8 +14,8 @@
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html">Products</a></li>
             <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="products.html">Products/Services</a></li>
             <li><a href="cart.html">Shopping Cart</a></li>
             <li><a href="comment_rating.html">Comments and Ratings</a></li>
         </ul>
@@ -26,43 +26,52 @@
         </a>
     </div>
     <main>
-        <form action="/submit_checkout" method="post" class="checkout-form">
-            <h2>Receiver Information</h2>
-            <div class="form-group">
-                <label for="full_name">Full Name:</label>
-                <input type="text" id="full_name" name="full_name" required>
+        <div class="checkout-container">
+            <h2>Billing Information</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactNumber">Contact Number:</label>
+                    <input type="text" id="contactNumber" name="contactNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" name="address" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cardHolder">Card Holder Name:</label>
+                    <input type="text" id="cardHolder" name="cardHolder" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+                </div>
+                <div class="form-group">
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+                </div>
+                <div class="form-group">
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="XXX" required>
+                </div>
+                <button type="submit">Place Order</button>
+            </form>
+            <h2>Order Summary</h2>
+            <div id="orderSummary">
+                <!-- Order summary will be displayed here -->
             </div>
-            <div class="form-group">
-                <label for="contact_number">Contact Number:</label>
-                <input type="text" id="contact_number" name="contact_number" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email (for receipt):</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <h2>Payment Information</h2>
-            <div class="form-group">
-                <label for="card_holder">Card Holder Name:</label>
-                <input type="text" id="card_holder" name="card_holder" required>
-            </div>
-            <div class="form-group">
-                <label for="card_number">Card Number:</label>
-                <input type="text" id="card_number" name="card_number" required>
-            </div>
-            <div class="form-group">
-                <label for="expiry_date">Expiry Date:</label>
-                <input type="text" id="expiry_date" name="expiry_date" required>
-            </div>
-            <div class="form-group">
-                <label for="cvv">CVV:</label>
-                <input type="text" id="cvv" name="cvv" required>
-            </div>
-            <button type="submit">Pay Now</button>
-        </form>
+        </div>
     </main>
     <footer>
-        <p>&copy; 2024 Company Name. All rights reserved.</p>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
+    <script src="checkout.js"></script>
 </body>
 </html>

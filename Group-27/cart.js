@@ -1,35 +1,55 @@
-// cart.js
-
-// Function to add an item to the cart
-function addToCart(productName, price, imageUrl, size) {
-    // Get the existing cart items from localStorage
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Create a new cart item
-    const newItem = {
-        name: productName,
-        price: price,
-        image: imageUrl,
-        size: size
-    };
-
-    // Add the new item to the cart
-    cart.push(newItem);
-
-    // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Optional: Display a message or redirect the user to the cart page
-    alert(`${productName} with size ${size} has been added to your cart.`);
-    // window.location.href = 'cart.html'; // Redirect to cart page (if desired)
-}
-
-// Function to get the cart items
 function getCartItems() {
-    return JSON.parse(localStorage.getItem('cart')) || [];
+    return JSON.parse(localStorage.getItem('cartItems')) || [];
 }
 
-// Function to display the cart items on the cart page
+function setCartItems(cartItems) {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+}
+
+function addToCart(name, price, image) {
+    const cartItems = getCartItems();
+    const existingItemIndex = cartItems.findIndex(item => item.name === name);
+    
+    if (existingItemIndex >= 0) {
+        cartItems[existingItemIndex].quantity += 1;
+    } else {
+        cartItems.push({ name, price, image, quantity: 1 });
+    }
+    
+    setCartItems(cartItems);
+    displayCartItems();
+}
+
+function removeCartItem(index) {
+    const cartItems = getCartItems();
+    cartItems.splice(index, 1);
+    setCartItems(cartItems);
+    displayCartItems();
+}
+
+function updateQuantity(index, increment) {
+    const cartItems = getCartItems();
+    if (increment) {
+        cartItems[index].quantity += 1;
+    } else {
+        cartItems[index].quantity -= 1;
+        if (cartItems[index].quantity === 0) {
+            removeCartItem(index);
+            return;
+        }
+    }
+    setCartItems(cartItems);
+    displayCartItems();
+}
+
+function updateTotalPrice(cartItems) {
+    let totalPrice = 0;
+    cartItems.forEach(item => {
+        totalPrice += item.price * item.quantity;
+    });
+    document.getElementById('total-price').innerText = `Total Price: RM${totalPrice.toFixed(2)}`;
+}
+
 function displayCartItems() {
     const cartItems = getCartItems();
     const cartContainer = document.getElementById('cart-items');
@@ -43,9 +63,13 @@ function displayCartItems() {
             <div class="cart-item-info">
                 <p>${item.name}</p>
                 <p>Price: RM${item.price}</p>
-                <p>Size: ${item.size}</p>
-                <button onclick="removeCartItem(${index})">Remove</button>
+                <div class="cart-item-quantity">
+                    <button class="quantity-btn" onclick="updateQuantity(${index}, false)">-</button>
+                    <span class="quantity-display">${item.quantity}</span>
+                    <button class="quantity-btn" onclick="updateQuantity(${index}, true)">+</button>
+                </div>
             </div>
+            <button onclick="removeCartItem(${index})">Remove</button>
         `;
         cartContainer.appendChild(itemElement);
     });
@@ -53,35 +77,14 @@ function displayCartItems() {
     updateTotalPrice(cartItems);
 }
 
-// Function to remove a specific item from the cart
-function removeCartItem(index) {
-    let cart = getCartItems();
-    cart.splice(index, 1);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    displayCartItems();
-}
-
-// Function to clear all items from the cart
-function clearCart() {
-    localStorage.removeItem('cart');
-    displayCartItems();
-}
-
-// Function to update the total price
-function updateTotalPrice(cartItems) {
-    let totalPrice = 0;
-    cartItems.forEach(item => {
-        totalPrice += item.price;
-    });
-    document.getElementById('total-price').innerText = `Total Price: RM${totalPrice.toFixed(2)}`;
-}
-
-// Function to handle checkout
 function checkout() {
     alert('Proceeding to checkout!');
-    // Add your checkout handling code here
-    // Example: redirect to a checkout page
-    // window.location.href = 'checkout.html';
+    window.location.href = 'checkout.html'
+}
+
+function clearCart() {
+    localStorage.removeItem('cartItems');
+    displayCartItems();
 }
 
 // Call displayCartItems() on page load

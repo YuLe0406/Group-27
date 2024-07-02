@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Shopping Cart</title>
     <link rel="stylesheet" href="cart.css">
-    <script src="cart.js"></script> <!-- Include the JavaScript file -->
+    <script src="cart.js" defer></script> <!-- Include the JavaScript file -->
 </head>
 <body>
     <header>
@@ -41,51 +41,5 @@
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
-
-    <script>
-        // Function to update the total price
-        function updateTotalPrice(cartItems) {
-            let totalPrice = 0;
-            cartItems.forEach(item => {
-                totalPrice += item.price;
-            });
-            document.getElementById('total-price').innerText = `Total Price: RM${totalPrice.toFixed(2)}`;
-        }
-
-        // Function to display cart items on the cart page
-        function displayCartItems() {
-            const cartItems = getCartItems();
-            const cartContainer = document.getElementById('cart-items');
-            cartContainer.innerHTML = '';
-
-            cartItems.forEach((item, index) => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'cart-item';
-                itemElement.innerHTML = `
-                    <img src="${item.image}" alt="${item.name}">
-                    <div class="cart-item-info">
-                        <p>${item.name}</p>
-                        <p>Price: RM${item.price}</p>
-                        <p>Size: ${item.size}</p>
-                        <button onclick="removeCartItem(${index})">Remove</button>
-                    </div>
-                `;
-                cartContainer.appendChild(itemElement);
-            });
-
-            updateTotalPrice(cartItems);
-        }
-
-        // Function to handle checkout
-        function checkout() {
-            alert('Proceeding to checkout!');
-            // Add your checkout handling code here
-            // Example: redirect to a checkout page
-            // window.location.href = 'checkout.html';
-        }
-
-        // Call displayCartItems() on page load
-        document.addEventListener('DOMContentLoaded', displayCartItems);
-    </script>
 </body>
 </html>
