@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Categories</title>
-    <link rel="stylesheet" href="manage_categories.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 
 <body>
@@ -36,14 +36,21 @@
 
             <?php
             $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-            $result = mysqli_query($conn, "SELECT * FROM manage_categories");	
+
+            $categoryQuery ="SELECT c.category_id, c.name, COUNT(p.product_id) AS total
+                FROM manage_categories c
+                LEFT JOIN manage_products p ON c.category_id = p.category_id
+                GROUP BY c.category_id, c.name
+                ";
+
+            $result = mysqli_query($conn, $categoryQuery);	
             
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
                     <td><?php echo $row["category_id"]; ?></td>
                     <td><?php echo $row["name"]; ?></td>
-                    <td><?php echo $row["total"]; ?></td>
+                    <td><?php echo number_format($row["total"]); ?></td>
                     <td>
                         <a href='categoryedit.php?edit&catid=<?php echo $row["category_id"]; ?>'><button>Edit</button></a>
                         <a href='manage_categories.php?del&catid=<?php echo $row["category_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>

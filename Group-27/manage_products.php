@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Products</title>
-    <link rel="stylesheet" href="manage_products.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 
 <body>
@@ -29,6 +29,7 @@
         <table>
             <tr>
                 <th>ID</th>
+                <th>Picture</th>
                 <th>Name</th>
                 <th>Price</th>
                 <th>Store</th>
@@ -38,12 +39,24 @@
 
             <?php
             $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
             $result = mysqli_query($conn, "SELECT p.*, c.name as category_name FROM manage_products p LEFT JOIN manage_categories c ON p.category_id = c.category_id");	
             
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
                     <td><?php echo $row["product_id"]; ?></td>
+                    <td>
+                        <?php 
+                        if (!empty($row["picture"])) {
+                            echo '<img src="uploads/' . $row["picture"] . '" alt="Product Image" width="100">';
+                        } else {
+                            echo 'No Image';
+                        }
+                        ?>
+                    </td>
                     <td><?php echo $row["name"]; ?></td>
                     <td><?php echo $row["price"]; ?></td>
                     <td><?php echo $row["store"]; ?></td>
@@ -55,13 +68,12 @@
                 </tr>
             <?php
             }
+            mysqli_close($conn);
             ?>   
-            
         </table>
         <form method="post" action="">
-        <button type="submit" name="add">Add New Product</button>
+            <button type="submit" name="add">Add New Product</button>
         </form>
-
     </main>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
@@ -77,11 +89,15 @@
 
 <?php
 if (isset($_REQUEST["del"])) {
-    $prodid = $_REQUEST["prodid"]; 
+    $prodid = $_REQUEST["prodid"];
+    $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
     mysqli_query($conn, "DELETE FROM manage_products WHERE product_id = $prodid");
+    mysqli_close($conn);
     header("Location: manage_products.php");
 }
-
 
 if (isset($_POST["add"])) {
     header("Location: productadd.php");

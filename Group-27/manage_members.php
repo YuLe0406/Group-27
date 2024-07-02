@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Members</title>
-    <link rel="stylesheet" href="manage_members.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 
 <body>
