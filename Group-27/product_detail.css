@@ -3,7 +3,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4f4f4;
+    background-image: url("repeating-chevrons.png");
+    background-size: cover;
 }
 
 header {
@@ -52,7 +53,7 @@ main {
 
 .product-detail img {
     width: 300px;
-    height: 300px;
+    height: auto;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -114,10 +115,13 @@ main {
 }
 
 footer {
+    background-color: #80d350;
+    color: #fff;
     text-align: center;
     padding: 20px;
-    background-color: #80d350;
-    color: white;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
 }
 
 .logo-container {
