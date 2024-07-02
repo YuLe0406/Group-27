@@ -32,7 +32,6 @@
             <label>Category:</label>
             <select name="category_id">
                 <?php
-                // Fetch categories from database
                 $categories_result = mysqli_query($conn, "SELECT * FROM manage_categories");
                 while ($category_row = mysqli_fetch_assoc($categories_result)) {
                     $selected = ($category_row['category_id'] == $row['category_id']) ? 'selected' : '';

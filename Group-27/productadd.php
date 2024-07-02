@@ -2,24 +2,20 @@
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
     $product_name = mysqli_real_escape_string($conn, $_POST["product_name"]);
     $price = floatval($_POST["price"]);
     $store = intval($_POST["store"]);
     $category_id = intval($_POST["category_id"]);
     
-    // Handle file upload
     $picture = "";
     if (isset($_FILES["picture"]) && $_FILES["picture"]["error"] == 0) {
         $picture = basename($_FILES["picture"]["name"]);
         move_uploaded_file($_FILES["picture"]["tmp_name"], "uploads/" . $picture);
     }
 
-    // Insert new product into database
     $sql = "INSERT INTO manage_products (name, price, store, category_id, picture) VALUES ('$product_name', $price, $store, $category_id, '$picture')";
     
     if (mysqli_query($conn, $sql)) {
-        // Redirect to manage_products.php after successful insertion
         header("Location: manage_products.php");
         exit();
     } else {
@@ -50,7 +46,6 @@ mysqli_close($conn);
                 <label>Category:</label>
                 <select name="category_id" required>
                     <?php
-                    // Fetch categories from database
                     $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
                     $categories_result = mysqli_query($conn, "SELECT * FROM manage_categories");
                     while ($category_row = mysqli_fetch_assoc($categories_result)) {

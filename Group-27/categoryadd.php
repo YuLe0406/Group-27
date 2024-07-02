@@ -2,14 +2,11 @@
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
     $category_name = $_POST["category_name"];
-
-    // Insert new category into database
     $sql = "INSERT INTO manage_categories (name) VALUES ('$category_name')";
     
     if (mysqli_query($conn, $sql)) {
-        // Redirect to manage_categories.php after successful insertion
+        
         header("Location: manage_categories.php");
         exit();
     } else {

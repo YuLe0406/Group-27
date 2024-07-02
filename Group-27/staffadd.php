@@ -2,15 +2,12 @@
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Collect form data
     $name = $_POST["name"];
     $role = $_POST["role"];
 
-    // Insert new staff member into database
     $sql = "INSERT INTO manage_staff (name, role) VALUES ('$name', '$role')";
     
     if (mysqli_query($conn, $sql)) {
-        // Redirect to manage_staff.php after successful insertion
         header("Location: manage_staff.php");
         exit();
     } else {
