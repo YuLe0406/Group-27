@@ -91,13 +91,10 @@
 if (isset($_REQUEST["del"])) {
     $prodid = $_REQUEST["prodid"];
     $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
     mysqli_query($conn, "DELETE FROM manage_products WHERE product_id = $prodid");
-    mysqli_close($conn);
     header("Location: manage_products.php");
 }
+
 
 if (isset($_POST["add"])) {
     header("Location: productadd.php");
