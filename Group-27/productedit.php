@@ -24,7 +24,7 @@
         }
     ?>
     <h1>Edit Product</h1>
-    <form name="editfrm" method="post" action="">
+    <form name="editfrm" method="post" action="" enctype="multipart/form-data">
         <p><label>Product Name:</label><input type="text" name="product_name" size="80" value="<?php echo htmlspecialchars($row['name']); ?>"></p>
         <p><label>Price:</label><input type="text" name="price" size="80" value="<?php echo htmlspecialchars($row['price']); ?>"></p>
         <p><label>Store:</label><input type="text" name="store" size="80" value="<?php echo htmlspecialchars($row['store']); ?>"></p>
@@ -41,7 +41,11 @@
                 ?>
             </select>
         </p>
-        <p><input type="hidden" name="productid" value="<?php echo $productid; ?>"></p>
+        <p><label>Picture:</label><input type="file" name="picture"></p>
+        <p>
+            <img src="uploads/<?php echo htmlspecialchars($row['picture']); ?>" alt="Product Image" width="100">
+        </p>
+        <p><input type="hidden" name="productid" value="<?php echo $prodid; ?>"></p>
         <p><input type="submit" name="savebtn" value="UPDATE PRODUCT"></p>
     </form>
     <?php
@@ -53,8 +57,14 @@
         $price = floatval($_POST["price"]);
         $store = intval($_POST["store"]);
         $category_id = intval($_POST["category_id"]);
+        
+        $picture = $row["picture"];
+        if (isset($_FILES["picture"]) && $_FILES["picture"]["error"] == 0) {
+            $picture = basename($_FILES["picture"]["name"]);
+            move_uploaded_file($_FILES["picture"]["tmp_name"], "uploads/" . $picture);
+        }
 
-        $sql = "UPDATE manage_products SET name='$product_name', price=$price, store=$store, category_id=$category_id WHERE product_id=$prodid";
+        $sql = "UPDATE manage_products SET name='$product_name', price=$price, store=$store, category_id=$category_id, picture='$picture' WHERE product_id=$productid";
         if (mysqli_query($conn, $sql)) {
             ?>
             <script type="text/javascript">
