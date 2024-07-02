@@ -1,3 +1,27 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+
+$search = "";
+if (isset($_GET["search"])) {
+    $search = mysqli_real_escape_string($conn, $_GET["search"]);
+}
+
+$orderQuery = "
+    SELECT manage_orders.*, SUM(manage_products.price * order_items.quantity) AS total_price
+    FROM manage_orders 
+    LEFT JOIN order_items ON manage_orders.order_id = order_items.order_id
+    LEFT JOIN manage_products ON order_items.product_id = manage_products.product_id
+";
+
+if ($search) {
+    $orderQuery .= " WHERE manage_orders.status LIKE '%$search%'";
+}
+
+$orderQuery .= " GROUP BY manage_orders.order_id";
+
+$result = mysqli_query($conn, $orderQuery);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +50,10 @@
     </div>
     <main>
         <h2>Order List</h2>
+        <form method="get" action="">
+            <input type="text" name="search" placeholder="Search by status" value="<?php echo htmlspecialchars($search); ?>">
+            <button type="submit">Search</button>
+        </form>
         <table>
             <tr>
                 <th>Order ID</th>
@@ -37,18 +65,6 @@
             </tr>
 
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-
-            $orderQuery = "
-                SELECT o.*, SUM(p.price * oi.quantity) AS total_price
-                FROM manage_orders o
-                LEFT JOIN order_items oi ON o.order_id = oi.order_id
-                LEFT JOIN manage_products p ON oi.product_id = p.product_id
-                GROUP BY o.order_id
-            ";
-
-            $result = mysqli_query($conn, $orderQuery);
-
             while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tr>
