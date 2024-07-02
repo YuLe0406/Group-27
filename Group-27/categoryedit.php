@@ -26,7 +26,6 @@
     <h1>Edit Category</h1>
     <form name="editfrm" method="post" action="">
         <p><label>Category Name:</label><input type="text" name="category_name" size="80" value="<?php echo htmlspecialchars($row['name']); ?>"></p>
-        <p><label>Total:</label><input type="text" name="total" size="80" value="<?php echo htmlspecialchars($row['total']); ?>"></p>
         <p><input type="hidden" name="catid" value="<?php echo $catid; ?>"></p>
         <p><input type="submit" name="savebtn" value="UPDATE CATEGORY"></p>
     </form>
@@ -36,9 +35,8 @@
     if (isset($_POST["savebtn"])) {
         $catid = $_POST["catid"];
         $category_name = mysqli_real_escape_string($conn, $_POST["category_name"]);
-        $total = intval($_POST["total"]);
 
-        $sql = "UPDATE manage_categories SET name='$category_name', total=$total WHERE category_id=$catid";
+        $sql = "UPDATE manage_categories SET name='$category_name' WHERE category_id=$catid";
         if (mysqli_query($conn, $sql)) {
             ?>
             <script type="text/javascript">
