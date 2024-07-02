@@ -109,13 +109,12 @@ button {
 }
 
 footer {
+    background-color: #80d350;
+    color: #fff;
     text-align: center;
     padding: 20px;
-    background-color: #80d350;
-    color: white;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
+    width: auto;
+    flex-shrink: 0; /* This ensures the footer stays at the bottom */
 }
 
 .logo-container {
