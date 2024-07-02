@@ -22,7 +22,6 @@ footer {
     height: 5;
 }
 
-
 nav ul {
     list-style-type: none;
     padding: 0;
@@ -112,13 +111,13 @@ body, html {
     padding: 0;
 }
 
-.logo-container {
+.logo{
     position: absolute;
     top: 1px; 
     left: 10px;
 }
 
-.logo-container img {
+.logo img {
     width: 100px;
     height: auto;
 }
