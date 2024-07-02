@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Products</title>
-    <link rel="stylesheet" href="manage_products.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 
 <body>

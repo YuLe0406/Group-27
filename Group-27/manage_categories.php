@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Categories</title>
-    <link rel="stylesheet" href="manage_categories.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 
 <body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Manage Orders</title>
-    <link rel="stylesheet" href="manage_orders.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 
 <body>

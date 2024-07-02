@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sales Report</title>
-    <link rel="stylesheet" href="sales_report.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body class="sales-report-page">
     <header>
