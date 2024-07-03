@@ -23,6 +23,7 @@
             <p><label>Role:</label><input type="text" name="role" size="80" value="<?php echo $row['role']; ?>"></p>
             <p><input type="submit" name="savebtn" value="UPDATE STAFF"></p>
         </form>
+        
     <?php 
     }
     ?>
