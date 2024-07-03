@@ -33,9 +33,68 @@ function displayOrderSummary() {
 document.getElementById('checkoutForm').addEventListener('submit', function(event) {
     event.preventDefault();
     alert('Order placed successfully!');
-    // Add your order processing code here
-    // Example: send the order data to the server
-    // window.location.href = 'order_confirmation.html';
+
+    // Capture form data
+    const fullName = document.getElementById('fullName').value;
+    const contactNumber = document.getElementById('contactNumber').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const cardHolder = document.getElementById('cardHolder').value;
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiryDate = document.getElementById('expiryDate').value;
+    const cvv = document.getElementById('cvv').value;
+    
+    // Get cart items and total price
+    const cartItems = getCartItems();
+    const totalPrice = updateTotalPrice(cartItems);
+    
+    // Create the invoice content
+    let itemsList = '';
+    cartItems.forEach(item => {
+        itemsList += `<p>${item.name} (x${item.quantity}) - RM${(item.price * item.quantity).toFixed(2)}</p>`;
+    });
+    
+    const invoiceContent = `
+        <html>
+            <head>
+                <title>Invoice</title>
+                <style>
+                    body { font-family: Arial, sans-serif; }
+                    .invoice-container { margin: 20px; }
+                    .invoice-header { text-align: center; }
+                    .invoice-details, .invoice-items { margin-top: 20px; }
+                    .invoice-details p, .invoice-items p { margin: 5px 0; }
+                </style>
+            </head>
+            <body>
+                <div class="invoice-container">
+                    <h1 class="invoice-header">Invoice</h1>
+                    <div class="invoice-details">
+                        <p><strong>Full Name:</strong> ${fullName}</p>
+                        <p><strong>Contact Number:</strong> ${contactNumber}</p>
+                        <p><strong>Email:</strong> ${email}</p>
+                        <p><strong>Address:</strong> ${address}</p>
+                    </div>
+                    <div class="invoice-items">
+                        ${itemsList}
+                    </div>
+                    <div class="invoice-total">
+                        <p><strong>Total Price:</strong> RM${totalPrice}</p>
+                    </div>
+                </div>
+            </body>
+        </html>
+    `;
+
+    // Open a new window and write the invoice content
+    const invoiceWindow = window.open('', 'Print Invoice', 'height=600,width=800');
+    invoiceWindow.document.write(invoiceContent);
+    invoiceWindow.document.close();
+    invoiceWindow.print();
+
+    // Clear cart after placing the order
+    localStorage.removeItem('cartItems');
+    displayOrderSummary();
 });
 
 // Call displayOrderSummary() on page load
