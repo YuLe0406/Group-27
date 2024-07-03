@@ -118,12 +118,11 @@ footer {
     background-color: #80d350;
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 1rem 0;
+    position: relative;
     width: 100%;
-    bottom: 0;
-    position: fixed;
+    margin-top: 20px;
 }
-
 .logo-container {
     position: absolute;
     top: 1px;
