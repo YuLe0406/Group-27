@@ -17,15 +17,25 @@ if ($conn->connect_error) {
 $product_id = isset($_GET['product_id']) ? (int)$_GET['product_id'] : 1;
 
 // Fetch product data
-$sql = "SELECT name, price, store, description, specifications FROM manage_products WHERE product_id = ?";
+$sql = "SELECT name, price, store FROM manage_products WHERE product_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $product_id);
 $stmt->execute();
-$stmt->bind_result($name, $price, $store, $description, $specifications);
+$stmt->bind_result($name, $price, $store);
 $stmt->fetch();
 $stmt->close();
 
 $conn->close();
+
+// Hardcoded descriptions and specifications for the product
+$description = "The Astrox 88s Pro is designed for professional badminton players. This racket offers superior control and power, making it ideal for advanced players seeking to dominate the game.";
+$specifications = [
+    "Weight: 83g",
+    "Material: High Modulus Graphite",
+    "Flex: Stiff",
+    "Balance Point: 305mm",
+    "Recommended String Tension: 20-28 lbs"
+];
 ?>
 
 <!DOCTYPE html>
@@ -65,8 +75,7 @@ $conn->close();
                 <h3>Specifications:</h3>
                 <ul>
                     <?php 
-                    $specs = explode("\n", $specifications);
-                    foreach ($specs as $spec) {
+                    foreach ($specifications as $spec) {
                         echo "<li>" . htmlspecialchars($spec) . "</li>";
                     }
                     ?>
