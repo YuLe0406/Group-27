@@ -31,5 +31,15 @@ function updatePagination() {
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
-    setInterval(() => moveSlide(1), 6000); // Automatically move to the next slide every 6 seconds
+    setInterval(() => moveSlide(1), 6000);
+
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 });
