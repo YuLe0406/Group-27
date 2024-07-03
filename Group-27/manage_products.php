@@ -66,11 +66,16 @@ $result = mysqli_query($conn, $productQuery);
                 <tr>
                     <td><?php echo $row["product_id"]; ?></td>
                     <td>
-                        <?php 
+                    <?php 
                         if (!empty($row["picture"])) {
-                            echo '<img src="uploads/' . $row["picture"] . '" alt="Product Image" width="100">';
+                        $imagePath = "uploads/" . $row["picture"];
+                        if (file_exists($imagePath)) {
+                        echo '<img src="' . $imagePath . '" alt="Product Image" width="100">';
                         } else {
-                            echo 'No Image';
+                        echo 'Image not found';
+                        }
+                        } else {
+                        echo 'No Image';
                         }
                         ?>
                     </td>
