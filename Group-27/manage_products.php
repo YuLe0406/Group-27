@@ -1,3 +1,22 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+
+$searchTerm = "";
+if (isset($_GET["search"])) {
+    $searchTerm = mysqli_real_escape_string($conn, $_GET["search"]);
+}
+
+$productQuery = "SELECT p.*, c.name as category_name 
+                 FROM manage_products p 
+                 LEFT JOIN manage_categories c ON p.category_id = c.category_id";
+
+if ($searchTerm) {
+    $productQuery .= " WHERE p.name LIKE '%$searchTerm%'";
+}
+
+$result = mysqli_query($conn, $productQuery);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +45,10 @@
     </div>
     <main>
         <h2>Product List</h2>
+        <form method="get" action="">
+            <input type="text" name="search" placeholder="Search by product name" value="<?php echo htmlspecialchars($searchTerm); ?>">
+            <button type="submit">Search</button>
+        </form>
         <table>
             <tr>
                 <th>ID</th>
@@ -38,14 +61,8 @@
             </tr>
 
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            $result = mysqli_query($conn, "SELECT p.*, c.name as category_name FROM manage_products p LEFT JOIN manage_categories c ON p.category_id = c.category_id");	
-            
             while ($row = mysqli_fetch_assoc($result)) {
-            ?>
+                ?>
                 <tr>
                     <td><?php echo $row["product_id"]; ?></td>
                     <td>

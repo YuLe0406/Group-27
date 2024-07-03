@@ -1,3 +1,20 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+
+$search = "";
+if (isset($_GET["search"])) {
+    $search= mysqli_real_escape_string($conn, $_GET["search"]);
+}
+
+$staffQuery = "SELECT * FROM manage_staff";
+
+if ($search) {
+    $staffQuery .= " WHERE name LIKE '%$search%'";
+}
+
+$result = mysqli_query($conn, $staffQuery);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +43,10 @@
     </div>
     <main>
         <h2>Staff List</h2>
+        <form method="get" action="">
+            <input type="text" name="search" placeholder="Search by name" value="<?php echo htmlspecialchars($search); ?>">
+            <button type="submit">Search</button>
+        </form>
         <table>
             <tr>
                 <th>ID</th>
@@ -35,9 +56,6 @@
             </tr>
 
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-            $result = mysqli_query($conn, "SELECT * FROM manage_staff");
-
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
@@ -79,4 +97,6 @@ if (isset($_REQUEST["del"])) {
 if (isset($_POST["add"])) {
     header("Location: staffadd.php");
 }
+
+mysqli_close($conn);
 ?>

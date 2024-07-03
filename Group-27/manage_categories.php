@@ -48,7 +48,7 @@ $result = mysqli_query($conn, $categoryQuery);
     <main>
         <h2>Category List</h2>
         <form method="get" action="">
-            <input type="text" name="search" placeholder="Search by name" value="<?php echo htmlspecialchars($searchTerm); ?>">
+            <input type="text" name="search" placeholder="Search by name" value="<?php echo htmlspecialchars($search); ?>">
             <button type="submit">Search</button>
         </form>
         <table>
