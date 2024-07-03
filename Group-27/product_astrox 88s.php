@@ -52,16 +52,16 @@ $specifications = [
     </header>
     <nav>
         <ul>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="products.php">Products</a></li>
+            <li><a href="products.html">Products</a></li>
             <li><a href="contact.html">Contact Us</a></li>
             <li><a href="cart.html">Shopping Cart</a></li>
             <li><a href="comment_rating.html">Comments and Ratings</a></li>
         </ul>
     </nav>
     <div class="logo-container">
-        <a href="index.php">
+        <a href="index.html">
             <img src="logo.png" alt="Logo">
         </a>
     </div>
