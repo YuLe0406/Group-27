@@ -1,12 +1,8 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
-$orderQuery = "
-    SELECT manage_orders.*, SUM(manage_products.price * order_items.quantity) AS total_price
-    FROM manage_orders 
-    LEFT JOIN order_items ON manage_orders.order_id = order_items.order_id
-    LEFT JOIN manage_products ON order_items.product_id = manage_products.product_id
-";
+$orderQuery = "SELECT * FROM manage_orders";
+
 
 
 $result = mysqli_query($conn, $orderQuery);
@@ -56,7 +52,7 @@ $result = mysqli_query($conn, $orderQuery);
                     <td><?php echo $row["order_id"]; ?></td>
                     <td><?php echo $row["order_date"]; ?></td>
                     <td><?php echo $row["customer_id"]; ?></td>
-                    <td><?php echo number_format($row["total_price"], 2); ?></td>
+                    <td><?php echo $row["total_price"]; ?></td>
                     <td>
                         <a href='orderedit.php?order_id=<?php echo $row["order_id"]; ?>'><button>Edit</button></a>
                         <a href='manage_orders.php?del&orderid=<?php echo $row["order_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
