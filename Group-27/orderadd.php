@@ -3,7 +3,7 @@ $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $customer_id = $_POST["customer_id"];
-    $order_date = date("Y-m-d H:i:s"); // Set the current date and time for the order_date
+    $order_date = date("Y-m-d H:i:s");
 
     $sql = "INSERT INTO manage_orders (order_date, customer_id) VALUES ('$order_date', '$customer_id')";
     
