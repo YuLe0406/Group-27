@@ -1,17 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
-$search = "";
-if (isset($_GET["search"])) {
-    $search = mysqli_real_escape_string($conn, $_GET["search"]);
-}
-
 $productQuery = "SELECT * FROM manage_products";
-
-if ($search) {
-    $productQuery .= " WHERE name LIKE '%$search%' OR category_id LIKE '%$search%'";
-}
-
 $result = mysqli_query($conn, $productQuery);
 ?>
 
@@ -43,16 +33,11 @@ $result = mysqli_query($conn, $productQuery);
     </div>
     <main>
         <h2>Product List</h2>
-        <form method="get" action="">
-            <input type="text" name="search" placeholder="Search by name or category" value="<?php echo htmlspecialchars($search); ?>">
-            <button type="submit">Search</button>
-        </form>
         <table>
             <tr>
                 <th>Product ID</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Store</th>
                 <th>Category ID</th>
                 <th>Actions</th>       
             </tr>
@@ -64,7 +49,6 @@ $result = mysqli_query($conn, $productQuery);
                     <td><?php echo $row["product_id"]; ?></td>
                     <td><?php echo $row["name"]; ?></td>
                     <td><?php echo number_format($row["price"], 2); ?></td>
-                    <td><?php echo $row["store"]; ?></td>
                     <td><?php echo $row["category_id"]; ?></td>
                     <td>
                         <a href='productedit.php?product_id=<?php echo $row["product_id"]; ?>'><button>Edit</button></a>
@@ -103,4 +87,4 @@ if (isset($_REQUEST["del"])) {
 }
 
 mysqli_close($conn);
-?>
+?> 

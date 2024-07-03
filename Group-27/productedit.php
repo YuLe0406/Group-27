@@ -25,7 +25,6 @@ if (isset($_GET["product_id"])) {
     <form name="editfrm" method="post" action="">
         <p><label>Name:</label><input type="text" name="name" size="80" value="<?php echo htmlspecialchars($row['name']); ?>" required></p>
         <p><label>Price:</label><input type="text" name="price" size="80" value="<?php echo htmlspecialchars($row['price']); ?>" required></p>
-        <p><label>Store:</label><input type="number" name="store" size="80" value="<?php echo htmlspecialchars($row['store']); ?>" required></p>
         <p>
             <label>Category:</label>
             <select name="category_id" required>
@@ -48,10 +47,9 @@ if (isset($_GET["product_id"])) {
 if (isset($_POST["savebtn"])) {
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
     $price = floatval($_POST["price"]);
-    $store = intval($_POST["store"]);
     $category_id = intval($_POST["category_id"]);
     
-    $updateQuery = "UPDATE manage_products SET name='$name', price=$price, store=$store, category_id=$category_id WHERE product_id=$product_id";
+    $updateQuery = "UPDATE manage_products SET name='$name', price=$price, category_id=$category_id WHERE product_id=$product_id";
     if (mysqli_query($conn, $updateQuery)) {
         echo "<script type='text/javascript'>alert('Product Updated');</script>";
         header("refresh:0.5; url=manage_products.php");
