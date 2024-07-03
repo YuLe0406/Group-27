@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>Products</title>
     <link rel="stylesheet" href="product.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
     <script src="cart.js" defer></script>
 </head>
 <body>
@@ -26,7 +31,7 @@
         </a>
     </div>
     <main>
-        <section class="product-category">
+        <section id="rackets" class="product-category">
             <h2>Badminton Rackets</h2>
             <div class="product-grid">
                 <div class="product-item">
@@ -59,7 +64,7 @@
                 </div>
             </div>
         </section>
-        <section class="product-category">
+        <section id="shoes" class="product-category">
             <h2>Sport Shoes</h2>
             <div class="product-grid">
                 <div class="product-item">
@@ -92,7 +97,7 @@
                 </div>
             </div>
         </section>
-        <section class="product-category">
+        <section id="shirts" class="product-category">
             <h2>Sport jerseys</h2>
             <div class="product-grid">
                 <div class="product-item">
