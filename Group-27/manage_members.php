@@ -85,7 +85,7 @@ $result = mysqli_query($conn, $memberQuery);
 
 <?php
 if (isset($_REQUEST["del"])) {
-    $memberid = $_REQUEST["member_id"];
+    $memberid = $_REQUEST["memberid"];
     mysqli_query($conn, "DELETE FROM manage_members WHERE member_id = $memberid");
     header("Location: manage_members.php");
 }
