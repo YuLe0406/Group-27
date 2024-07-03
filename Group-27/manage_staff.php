@@ -1,3 +1,11 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+
+$staffQuery = "SELECT * FROM manage_staff";
+
+$result = mysqli_query($conn, $staffQuery);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,9 +43,6 @@
             </tr>
 
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-            $result = mysqli_query($conn, "SELECT * FROM manage_staff");
-
             while ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <tr>
@@ -79,4 +84,6 @@ if (isset($_REQUEST["del"])) {
 if (isset($_POST["add"])) {
     header("Location: staffadd.php");
 }
+
+mysqli_close($conn);
 ?>

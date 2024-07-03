@@ -1,18 +1,9 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
-$search = "";
-if (isset($_GET["search"])) {
-    $search = mysqli_real_escape_string($conn, $_GET["search"]);
-}
-
 $categoryQuery = "SELECT manage_categories.category_id, manage_categories.name, COUNT(manage_products.product_id) AS total
                   FROM manage_categories
                   LEFT JOIN manage_products ON manage_categories.category_id = manage_products.category_id";
-                  
-if ($search) {
-    $categoryQuery .= " WHERE manage_categories.name LIKE '%$search%'";
-}
 
 $categoryQuery .= " GROUP BY manage_categories.category_id, manage_categories.name";
 
@@ -47,10 +38,6 @@ $result = mysqli_query($conn, $categoryQuery);
     </div>
     <main>
         <h2>Category List</h2>
-        <form method="get" action="">
-            <input type="text" name="search" placeholder="Search by name" value="<?php echo htmlspecialchars($searchTerm); ?>">
-            <button type="submit">Search</button>
-        </form>
         <table>
             <tr>
                 <th>ID</th>

@@ -1,11 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
-$search = "";
-if (isset($_GET["search"])) {
-    $search = mysqli_real_escape_string($conn, $_GET["search"]);
-}
-
 $orderQuery = "
     SELECT manage_orders.*, SUM(manage_products.price * order_items.quantity) AS total_price
     FROM manage_orders 
@@ -13,11 +8,6 @@ $orderQuery = "
     LEFT JOIN manage_products ON order_items.product_id = manage_products.product_id
 ";
 
-if ($search) {
-    $orderQuery .= " WHERE manage_orders.status LIKE '%$search%'";
-}
-
-$orderQuery .= " GROUP BY manage_orders.order_id";
 
 $result = mysqli_query($conn, $orderQuery);
 ?>
@@ -50,17 +40,12 @@ $result = mysqli_query($conn, $orderQuery);
     </div>
     <main>
         <h2>Order List</h2>
-        <form method="get" action="">
-            <input type="text" name="search" placeholder="Search by status" value="<?php echo htmlspecialchars($search); ?>">
-            <button type="submit">Search</button>
-        </form>
         <table>
             <tr>
                 <th>Order ID</th>
                 <th>Order Date</th>
                 <th>Customer ID</th>
                 <th>Total Price</th>
-                <th>Status</th>
                 <th>Actions</th>       
             </tr>
 
@@ -72,8 +57,8 @@ $result = mysqli_query($conn, $orderQuery);
                     <td><?php echo $row["order_date"]; ?></td>
                     <td><?php echo $row["customer_id"]; ?></td>
                     <td><?php echo number_format($row["total_price"], 2); ?></td>
-                    <td><?php echo $row["status"]; ?></td>
                     <td>
+                        <a href='orderedit.php?order_id=<?php echo $row["order_id"]; ?>'><button>Edit</button></a>
                         <a href='manage_orders.php?del&orderid=<?php echo $row["order_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
                     </td>
                 </tr>
@@ -82,6 +67,7 @@ $result = mysqli_query($conn, $orderQuery);
             ?>   
 
         </table>
+        <a href="orderadd.php"><button>Add New Order</button></a>
     </main>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>

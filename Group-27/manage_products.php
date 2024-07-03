@@ -1,3 +1,10 @@
+<?php
+$conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
+
+$productQuery = "SELECT * FROM manage_products";
+$result = mysqli_query($conn, $productQuery);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,52 +35,32 @@
         <h2>Product List</h2>
         <table>
             <tr>
-                <th>ID</th>
-                <th>Picture</th>
+                <th>Product ID</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Store</th>
-                <th>Category</th>
+                <th>Category ID</th>
                 <th>Actions</th>       
             </tr>
 
             <?php
-            $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            $result = mysqli_query($conn, "SELECT p.*, c.name as category_name FROM manage_products p LEFT JOIN manage_categories c ON p.category_id = c.category_id");	
-            
             while ($row = mysqli_fetch_assoc($result)) {
-            ?>
+                ?>
                 <tr>
                     <td><?php echo $row["product_id"]; ?></td>
-                    <td>
-                        <?php 
-                        if (!empty($row["picture"])) {
-                            echo '<img src="uploads/' . $row["picture"] . '" alt="Product Image" width="100">';
-                        } else {
-                            echo 'No Image';
-                        }
-                        ?>
-                    </td>
                     <td><?php echo $row["name"]; ?></td>
-                    <td><?php echo $row["price"]; ?></td>
-                    <td><?php echo $row["store"]; ?></td>
-                    <td><?php echo $row["category_name"]; ?></td>
+                    <td><?php echo number_format($row["price"], 2); ?></td>
+                    <td><?php echo $row["category_id"]; ?></td>
                     <td>
-                        <a href='productedit.php?edit&prodid=<?php echo $row["product_id"]; ?>'><button>Edit</button></a>
-                        <a href='manage_products.php?del&prodid=<?php echo $row["product_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
+                        <a href='productedit.php?product_id=<?php echo $row["product_id"]; ?>'><button>Edit</button></a>
+                        <a href='manage_products.php?del&productid=<?php echo $row["product_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
                     </td>
                 </tr>
             <?php
             }
-            mysqli_close($conn);
             ?>   
+
         </table>
-        <form method="post" action="">
-            <button type="submit" name="add">Add New Product</button>
-        </form>
+        <a href="productadd.php"><button>Add New Product</button></a>
     </main>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
@@ -89,14 +76,15 @@
 
 <?php
 if (isset($_REQUEST["del"])) {
-    $prodid = $_REQUEST["prodid"];
-    $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-    mysqli_query($conn, "DELETE FROM manage_products WHERE product_id = $prodid");
-    header("Location: manage_products.php");
+    $productid = $_REQUEST["productid"];
+    $deleteQuery = "DELETE FROM manage_products WHERE product_id = $productid";
+
+    if (mysqli_query($conn, $deleteQuery)) {
+        header("Location: manage_products.php");
+    } else {
+        echo "<script>alert('Cannot delete product because it is referenced in order items.');</script>";
+    }
 }
 
-
-if (isset($_POST["add"])) {
-    header("Location: productadd.php");
-}
-?>
+mysqli_close($conn);
+?> 

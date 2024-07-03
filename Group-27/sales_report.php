@@ -28,48 +28,49 @@
         <table>
             <tr>
                 <th>Month</th>
-                <th>Total Sales (RM)</th>
+                <th>Total Sales</th>
+                <th>Actions</th>
             </tr>
             <?php
             $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
-
-            // Check connection
+            
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-
+            
             $query = "
-                SELECT DATE_FORMAT(mo.order_date, '%M %Y') AS order_month, 
-                       SUM(oi.quantity * mp.price) AS total_sales 
-                FROM manage_orders mo
-                JOIN order_items oi ON mo.order_id = oi.order_id
-                JOIN manage_products mp ON oi.product_id = mp.product_id
-                WHERE mo.status IN ('Approved', 'Pending')
-                GROUP BY DATE_FORMAT(mo.order_date, '%Y-%m')
-                ORDER BY DATE_FORMAT(mo.order_date, '%Y-%m') DESC
+                SELECT DATE_FORMAT(manage_orders.order_date, '%M %Y') AS order_month,
+                        SUM(order_items.quantity * manage_products.price) AS total_sales,
+                        DATE_FORMAT(manage_orders.order_date, '%Y-%m') AS month_year
+                FROM manage_orders
+                JOIN order_items ON manage_orders.order_id = order_items.order_id
+                JOIN manage_products ON order_items.product_id = manage_products.product_id
+                GROUP BY DATE_FORMAT(manage_orders.order_date, '%Y-%m')
+                ORDER BY DATE_FORMAT(manage_orders.order_date, '%Y-%m') DESC
             ";
-
+            
             $result = mysqli_query($conn, $query);
-
+            
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>";
                     echo "<td>" . $row['order_month'] . "</td>";
                     echo "<td>RM" . number_format($row['total_sales'], 2) . "</td>";
+                    echo "<td>";
+                    echo "<a href='print_monthly_report.php?month=" . $row['month_year'] . "'><button>Print</button></a>";
+                    echo "</td>";
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='2'>No sales data available</td></tr>";
+                echo "<tr><td colspan='3'>No sales data available</td></tr>";
             }
-
+            
             mysqli_close($conn);
             ?>
         </table>
-        <button onclick="window.print()">Print Report</button>
     </main>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
