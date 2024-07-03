@@ -17,7 +17,6 @@ $query = "
     JOIN order_items ON manage_orders.order_id = order_items.order_id
     JOIN manage_products ON order_items.product_id = manage_products.product_id
     WHERE DATE_FORMAT(manage_orders.order_date, '%Y-%m') = ?
-    AND manage_orders.status IN ('Approved', 'Pending')
     GROUP BY manage_orders.order_id
     ORDER BY manage_orders.order_date ASC
 ";

@@ -1,16 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
-$search = "";
-if (isset($_GET["search"])) {
-    $search= mysqli_real_escape_string($conn, $_GET["search"]);
-}
-
 $staffQuery = "SELECT * FROM manage_staff";
-
-if ($search) {
-    $staffQuery .= " WHERE name LIKE '%$search%'";
-}
 
 $result = mysqli_query($conn, $staffQuery);
 ?>
@@ -43,10 +34,6 @@ $result = mysqli_query($conn, $staffQuery);
     </div>
     <main>
         <h2>Staff List</h2>
-        <form method="get" action="">
-            <input type="text" name="search" placeholder="Search by name" value="<?php echo htmlspecialchars($search); ?>">
-            <button type="submit">Search</button>
-        </form>
         <table>
             <tr>
                 <th>ID</th>

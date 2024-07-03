@@ -1,15 +1,8 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
-$search = "";
-if (isset($_GET["search"])) {
-    $search = mysqli_real_escape_string($conn, $_GET["search"]);
-}
 
 $memberQuery = "SELECT * FROM manage_members";
-if ($search) {
-    $memberQuery .= " WHERE name LIKE '%$search%'";
-}
 
 $result = mysqli_query($conn, $memberQuery);
 ?>
@@ -42,10 +35,6 @@ $result = mysqli_query($conn, $memberQuery);
     </div>
     <main>
         <h2>Member List</h2>
-        <form method="get" action="">
-            <input type="text" name="search" placeholder="Search by name" value="<?php echo htmlspecialchars($search); ?>">
-            <button type="submit">Search</button>
-        </form>
         <table>
             <tr>
                 <th>ID</th>
@@ -62,6 +51,7 @@ $result = mysqli_query($conn, $memberQuery);
                     <td><?php echo $row["name"]; ?></td>
                     <td><?php echo $row["email"]; ?></td>
                     <td>
+                        <a href='memberedit.php?edit&catid=<?php echo $row["category_id"]; ?>'><button>Edit</button></a>
                         <a href='manage_members.php?del&memberid=<?php echo $row["member_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
                     </td>
                 </tr>
@@ -70,6 +60,7 @@ $result = mysqli_query($conn, $memberQuery);
             ?>
 
         </table>
+        <a href="memberadd.php"><button>Add New Member</button></a>
     </main>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>

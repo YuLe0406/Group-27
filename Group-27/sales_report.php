@@ -45,7 +45,6 @@
                 FROM manage_orders
                 JOIN order_items ON manage_orders.order_id = order_items.order_id
                 JOIN manage_products ON order_items.product_id = manage_products.product_id
-                WHERE manage_orders.status IN ('Approved', 'Pending')
                 GROUP BY DATE_FORMAT(manage_orders.order_date, '%Y-%m')
                 ORDER BY DATE_FORMAT(manage_orders.order_date, '%Y-%m') DESC
             ";
