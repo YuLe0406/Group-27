@@ -35,7 +35,7 @@ mysqli_close($conn);
     <main>
         <form method="post" action="">
             <p>
-                <label>Customer:</label>
+                <label>Customer Name:</label>
                 <select name="customer_id" required>
                     <?php while ($row = mysqli_fetch_assoc($customers)) { ?>
                         <option value="<?php echo $row['member_id']; ?>"><?php echo $row['name']; ?></option>
