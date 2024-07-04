@@ -45,8 +45,9 @@ $specifications = [
     <title><?php echo htmlspecialchars($name); ?> - Product Astrox 88s Pro</title>
     <link rel="stylesheet" href="product_detail.css">
     <script src="cart.js"></script>
+    <script src="product_detail_alert.js" defer></script>
 </head>
-<body>
+<body onload="checkStock(<?php echo $store; ?>)">
     <header>
         <h1>Astrox 88s Pro</h1>
     </header>

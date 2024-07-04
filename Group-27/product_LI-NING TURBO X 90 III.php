@@ -45,8 +45,9 @@ $specifications = [
     <title><?php echo htmlspecialchars($name); ?> - Product TURBO X 90 III</title>
     <link rel="stylesheet" href="product_detail.css">
     <script src="cart.js"></script>
+    <script src="product_detail_alert.js" defer></script>
 </head>
-<body>
+<body onload="checkStock(<?php echo $store; ?>)">
     <header>
         <h1>Product Detail</h1>
     </header>

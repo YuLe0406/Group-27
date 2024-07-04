@@ -43,8 +43,9 @@ $specifications = [
     <title><?php echo htmlspecialchars($name); ?> - Product Yonex Malaysia Master 2023 T-shirt</title>
     <link rel="stylesheet" href="product_detail.css">
     <script src="cart.js"></script>
+    <script src="product_detail_alert.js" defer></script>
 </head>
-<body>
+<body onload="checkStock(<?php echo $store; ?>)">
     <header>
         <h1>Yonex Malaysia Master 2023 T-shirt</h1>
     </header>

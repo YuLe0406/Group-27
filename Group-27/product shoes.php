@@ -44,8 +44,9 @@ $specifications = [
     <title><?php echo htmlspecialchars($name); ?> - Product Li Ning Ning Ultra Speed Sn44</title>
     <link rel="stylesheet" href="product_detail.css">
     <script src="cart.js"></script>
+    <script src="product_detail_alert.js" defer></script>
 </head>
-<body>
+<body onload="checkStock(<?php echo $store; ?>)">
     <header>
         <h1>Li Ning Ning Ultra Speed Sn44</h1>
     </header>
@@ -98,7 +99,7 @@ $specifications = [
                             <option value="10">10</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Li Ning Ning Ultra Speed Sn44.jpg', document.getElementById('shoe-size').value)">
+                    <button id="add-to-cart-btn" <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Li Ning Ning Ultra Speed Sn44.jpg', document.getElementById('shoe-size').value)">
                         Add to Cart
                     </button>
                 </div>
