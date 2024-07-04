@@ -6,7 +6,7 @@ if ($conn->connect_error) {
 }
 
 if (isset($_GET["memberid"])) {
-    $member_id = $_GET["memberid"];
+    $member_id = (int)$_GET["memberid"];
     $result = mysqli_query($conn, "SELECT * FROM manage_members WHERE member_id = $member_id");
     if ($result) {
         $row = mysqli_fetch_assoc($result);
@@ -15,15 +15,15 @@ if (isset($_GET["memberid"])) {
     }
 }
 
-if (isset($_POST["savebtn"])) {
-    $member_id = $_POST["member_id"];
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["savebtn"])) {
+    $member_id = (int)$_POST["member_id"];
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
     $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
     if (!empty($password)) {
-        $password_hashed = password_hash($password, PASSWORD_BCRYPT);
-        $sql = "UPDATE manage_members SET name='$name', email='$email', password='$password_hashed' WHERE member_id=$member_id";
+        // Store password as plain text (not recommended)
+        $sql = "UPDATE manage_members SET name='$name', email='$email', password='$password' WHERE member_id=$member_id";
     } else {
         $sql = "UPDATE manage_members SET name='$name', email='$email' WHERE member_id=$member_id";
     }
@@ -38,6 +38,7 @@ if (isset($_POST["savebtn"])) {
 
 mysqli_close($conn);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

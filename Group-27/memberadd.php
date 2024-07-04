@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
     $password = mysqli_real_escape_string($conn, $_POST["password"]);
-    $password_hashed = password_hash($password, PASSWORD_BCRYPT);
+    $password_hashed = md5($password);
 
     $sql = "INSERT INTO manage_members (name, email, password) VALUES ('$name', '$email', '$password_hashed')";
     
@@ -17,8 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-mysqli_close($conn);
-?>
+mysqli_close($conn); ?>
 
 <!DOCTYPE html>
 <html lang="en">
