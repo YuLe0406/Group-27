@@ -22,7 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["savebtn"])) {
     $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
     if (!empty($password)) {
-        // Store password as plain text (not recommended)
         $sql = "UPDATE manage_members SET name='$name', email='$email', password='$password' WHERE member_id=$member_id";
     } else {
         $sql = "UPDATE manage_members SET name='$name', email='$email' WHERE member_id=$member_id";

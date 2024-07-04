@@ -4,10 +4,9 @@ $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = mysqli_real_escape_string($conn, $_POST["name"]);
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
-    $password = mysqli_real_escape_string($conn, $_POST["password"]);
-    $password_hashed = md5($password);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]); // No hashing applied
 
-    $sql = "INSERT INTO manage_members (name, email, password) VALUES ('$name', '$email', '$password_hashed')";
+    $sql = "INSERT INTO manage_members (name, email, password) VALUES ('$name', '$email', '$password')";
     
     if (mysqli_query($conn, $sql)) {
         header("Location: manage_members.php");
@@ -17,7 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-mysqli_close($conn); ?>
+mysqli_close($conn);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
