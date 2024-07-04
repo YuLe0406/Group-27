@@ -37,16 +37,14 @@
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            
+
             $query = "
-                SELECT DATE_FORMAT(manage_orders.order_date, '%M %Y') AS order_month,
-                        SUM(order_items.quantity * manage_products.price) AS total_sales,
-                        DATE_FORMAT(manage_orders.order_date, '%Y-%m') AS month_year
+                SELECT DATE_FORMAT(order_date, '%M %Y') AS order_month,
+                       SUM(total_price) AS total_sales,
+                       DATE_FORMAT(order_date, '%Y-%m') AS month_year
                 FROM manage_orders
-                JOIN order_items ON manage_orders.order_id = order_items.order_id
-                JOIN manage_products ON order_items.product_id = manage_products.product_id
-                GROUP BY DATE_FORMAT(manage_orders.order_date, '%Y-%m')
-                ORDER BY DATE_FORMAT(manage_orders.order_date, '%Y-%m') DESC
+                GROUP BY DATE_FORMAT(order_date, '%Y-%m')
+                ORDER BY DATE_FORMAT(order_date, '%Y-%m') DESC
             ";
             
             $result = mysqli_query($conn, $query);
