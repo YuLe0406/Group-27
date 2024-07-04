@@ -1,6 +1,7 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
+// Handle delete action
 if (isset($_GET["del"]) && isset($_GET["productid"])) {
     $productid = intval($_GET["productid"]);
     $deleteQuery = "DELETE FROM manage_products WHERE product_id = $productid";
@@ -11,7 +12,12 @@ if (isset($_GET["del"]) && isset($_GET["productid"])) {
     } else {
         $delete_error = "Error deleting product. It may be referenced in order items.";
     }
-    
+}
+
+// Handle add action
+if (isset($_POST["add"])) {
+    header("Location: productadd.php");
+    exit();
 }
 
 $productQuery = "SELECT * FROM manage_products";
@@ -77,9 +83,10 @@ $result = mysqli_query($conn, $productQuery);
             ?>
         </table>
         <form method="post" action="">
-        <button type="submit" name="add">Add New Product</button>
+            <button type="submit" name="add">Add New Product</button>
         </form>
     </main>
+
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
@@ -93,9 +100,5 @@ $result = mysqli_query($conn, $productQuery);
 </html>
 
 <?php
- if (isset($_POST["add"])) {
-    header("Location: productadd.php");
-}
-
 mysqli_close($conn);
 ?>
