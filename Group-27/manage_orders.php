@@ -1,11 +1,26 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_REQUEST["del"])) {
+    $orderid = $_REQUEST["orderid"];
+    $stmt = mysqli_prepare($conn, "DELETE FROM manage_orders WHERE order_id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $orderid);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("Location: manage_orders.php");
+    exit;
+}
+
 $orderQuery = "SELECT * FROM manage_orders";
-
-
-
 $result = mysqli_query($conn, $orderQuery);
+
+if (!$result) {
+    die("Query failed: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +30,6 @@ $result = mysqli_query($conn, $orderQuery);
     <title>Manage Orders</title>
     <link rel="stylesheet" href="manage.css">
 </head>
-
 <body>
     <header>
         <h1>Manage Orders</h1>
@@ -42,26 +56,20 @@ $result = mysqli_query($conn, $orderQuery);
                 <th>Order Date</th>
                 <th>Customer ID</th>
                 <th>Total Price</th>
-                <th>Actions</th>       
+                <th>Actions</th>
             </tr>
-
-            <?php
-            while ($row = mysqli_fetch_assoc($result)) {
-                ?>
+            <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <tr>
-                    <td><?php echo $row["order_id"]; ?></td>
-                    <td><?php echo $row["order_date"]; ?></td>
-                    <td><?php echo $row["customer_id"]; ?></td>
-                    <td><?php echo $row["total_price"]; ?></td>
+                    <td><?php echo htmlspecialchars($row["order_id"]); ?></td>
+                    <td><?php echo htmlspecialchars($row["order_date"]); ?></td>
+                    <td><?php echo htmlspecialchars($row["customer_id"]); ?></td>
+                    <td>RM <?php echo number_format($row["total_price"], 2); ?></td>
                     <td>
-                        <a href='orderedit.php?order_id=<?php echo $row["order_id"]; ?>'><button>Edit</button></a>
-                        <a href='manage_orders.php?del&orderid=<?php echo $row["order_id"]; ?>' onclick="return confirmation();"><button>Delete</button></a>
+                        <a href='orderedit.php?order_id=<?php echo htmlspecialchars($row["order_id"]); ?>'><button>Edit</button></a>
+                        <a href='manage_orders.php?del&orderid=<?php echo htmlspecialchars($row["order_id"]); ?>' onclick="return confirmation();"><button>Delete</button></a>
                     </td>
                 </tr>
-            <?php
-            }
-            ?>   
-
+            <?php endwhile; ?>
         </table>
         <a href="orderadd.php"><button>Add New Order</button></a>
     </main>
@@ -78,11 +86,6 @@ $result = mysqli_query($conn, $orderQuery);
 </html>
 
 <?php
-if (isset($_REQUEST["del"])) {
-    $orderid = $_REQUEST["orderid"];
-    mysqli_query($conn, "DELETE FROM manage_orders WHERE order_id = $orderid");
-    header("Location: manage_orders.php");
-}
-
+mysqli_free_result($result);
 mysqli_close($conn);
 ?>

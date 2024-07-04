@@ -3,9 +3,10 @@ $conn = mysqli_connect("localhost", "root", "", "pepe_sportshop");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $customer_id = $_POST["customer_id"];
+    $total_price = $_POST["total_price"];
     $order_date = date("Y-m-d H:i:s");
 
-    $sql = "INSERT INTO manage_orders (order_date, customer_id) VALUES ('$order_date', '$customer_id')";
+    $sql = "INSERT INTO manage_orders (order_date, customer_id, total_price) VALUES ('$order_date', '$customer_id', '$total_price')";
     
     if (mysqli_query($conn, $sql)) {
         header("Location: manage_orders.php");
@@ -25,7 +26,7 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <title>Add New Order</title>
-    <link rel="stylesheet" href="manage_orders.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
     <header>
@@ -40,6 +41,10 @@ mysqli_close($conn);
                         <option value="<?php echo $row['member_id']; ?>"><?php echo $row['name']; ?></option>
                     <?php } ?>
                 </select>
+            </p>
+            <p>
+                <label>Total Price:</label>
+                <input type="number" step="0.01" name="total_price" required>
             </p>
             <p><button type="submit" name="add_order">Add Order</button></p>
         </form>
