@@ -49,6 +49,9 @@ mysqli_close($conn);
             <p><button type="submit" name="add_order">Add Order</button></p>
         </form>
     </main>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>

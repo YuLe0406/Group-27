@@ -51,6 +51,9 @@ mysqli_close($conn);
         </form>
         <?php endif; ?>
     </main>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>
