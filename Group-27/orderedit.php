@@ -15,14 +15,13 @@ if (isset($_GET["order_id"])) {
     }
 }
 
+$customers = mysqli_query($conn, "SELECT member_id, name FROM manage_members");
+
 if (isset($_POST["savebtn"])) {
     $orderid = $_POST["order_id"];
     $order_date = mysqli_real_escape_string($conn, $_POST["order_date"]);
-    $customer_name = mysqli_real_escape_string($conn, $_POST["customer_name"]);
+    $customer_id = mysqli_real_escape_string($conn, $_POST["customer_id"]);
     $total_price = mysqli_real_escape_string($conn, $_POST["total_price"]);
-    $customerResult = mysqli_query($conn, "SELECT member_id FROM manage_members WHERE name = '$customer_name'");
-    $customerRow = mysqli_fetch_assoc($customerResult);
-    $customer_id = $customerRow['member_id'];
 
     $sql = "UPDATE manage_orders SET order_date='$order_date', customer_id='$customer_id', total_price='$total_price' WHERE order_id=$orderid";
     if (mysqli_query($conn, $sql)) {
@@ -56,7 +55,13 @@ mysqli_close($conn);
             </p>
             <p>
                 <label>Customer Name:</label>
-                <input type="text" name="customer_name" required value="<?php echo htmlspecialchars($row['customer_name']); ?>">
+                <select name="customer_id" required>
+                    <?php while ($customer = mysqli_fetch_assoc($customers)) { ?>
+                        <option value="<?php echo $customer['member_id']; ?>" <?php echo $customer['member_id'] == $row['customer_id'] ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($customer['name']); ?>
+                        </option>
+                    <?php } ?>
+                </select>
             </p>
             <p>
                 <label>Total Price:</label>
