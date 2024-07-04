@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Get product ID from query parameter
-$product_id = isset($_GET['product_id']) ? (int)$_GET['product_id'] : 1;
+$product_id = isset($_GET['product_id']) ? (int)$_GET['product_id'] : 5;
 
 // Fetch product data
 $sql = "SELECT name, price, store FROM manage_products WHERE product_id = ?";
@@ -28,13 +28,13 @@ $stmt->close();
 $conn->close();
 
 // Hardcoded descriptions and specifications for the product
-$description = "The Astrox 88s Pro is designed for professional badminton players. This racket offers superior control and power, making it ideal for advanced players seeking to dominate the game.";
+$description = "The VICTOR Bravesword 1000 is designed for professional players who want precision and power in their game. It features an aerodynamic frame and high-quality materials that provide excellent performance on the court.";
 $specifications = [
-    "Weight: 83g",
-    "Material: High Modulus Graphite",
+    "Weight: 85-89g",
+    "Material: High Modulus Graphite + Nano Resin",
     "Flex: Stiff",
-    "Balance Point: 305mm",
-    "Recommended String Tension: 20-28 lbs"
+    "Balance Point: Head Heavy",
+    "Recommended String Tension: 24-30 lbs"
 ];
 ?>
 
@@ -42,13 +42,13 @@ $specifications = [
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo htmlspecialchars($name); ?> - Product Astrox 88s Pro</title>
+    <title><?php echo htmlspecialchars($name); ?> - Product VICTOR Bravesword 1000</title>
     <link rel="stylesheet" href="product_detail.css">
     <script src="cart.js"></script>
 </head>
 <body>
     <header>
-        <h1>Astrox 88s Pro</h1>
+        <h1>VICTOR Bravesword 1000</h1>
     </header>
     <nav>
         <ul>
@@ -67,7 +67,7 @@ $specifications = [
     </div>
     <main>
         <div class="product-detail">
-            <img src="Astrox 88s pro.jpg" alt="<?php echo htmlspecialchars($name); ?>">
+            <img src="VICTOR Bravesword 1000.jpg" alt="<?php echo htmlspecialchars($name); ?>">
             <div class="product-info">
                 <h1><?php echo htmlspecialchars($name); ?></h1>
                 <p class="price">RM<?php echo htmlspecialchars($price); ?></p>
@@ -97,7 +97,7 @@ $specifications = [
                             <option value="G5">G5</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Astrox 88s pro.jpg', document.getElementById('grip-size').value)">
+                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'VICTOR Bravesword 1000.jpg', document.getElementById('grip-size').value)">
                         Add to Cart
                     </button>
                 </div>

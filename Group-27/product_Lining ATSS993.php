@@ -14,7 +14,7 @@ if ($conn->connect_error) {
 }
 
 // Get product ID from query parameter
-$product_id = isset($_GET['product_id']) ? (int)$_GET['product_id'] : 1;
+$product_id = isset($_GET['product_id']) ? (int)$_GET['product_id'] : 3;
 
 // Fetch product data
 $sql = "SELECT name, price, store FROM manage_products WHERE product_id = ?";
@@ -28,13 +28,11 @@ $stmt->close();
 $conn->close();
 
 // Hardcoded descriptions and specifications for the product
-$description = "The Astrox 88s Pro is designed for professional badminton players. This racket offers superior control and power, making it ideal for advanced players seeking to dominate the game.";
+$description = "The Lining ATSS993 shirt is designed for comfort and performance. Its lightweight fabric ensures you stay cool and dry during your games.";
 $specifications = [
-    "Weight: 83g",
-    "Material: High Modulus Graphite",
-    "Flex: Stiff",
-    "Balance Point: 305mm",
-    "Recommended String Tension: 20-28 lbs"
+    "Material: Polyester",
+    "Color: White/Red",
+    "Available Sizes: S, M, L, XL"
 ];
 ?>
 
@@ -42,13 +40,13 @@ $specifications = [
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?php echo htmlspecialchars($name); ?> - Product Astrox 88s Pro</title>
+    <title><?php echo htmlspecialchars($name); ?> - Product Lining ATSS993</title>
     <link rel="stylesheet" href="product_detail.css">
     <script src="cart.js"></script>
 </head>
 <body>
     <header>
-        <h1>Astrox 88s Pro</h1>
+        <h1>Lining ATSS993</h1>
     </header>
     <nav>
         <ul>
@@ -67,7 +65,7 @@ $specifications = [
     </div>
     <main>
         <div class="product-detail">
-            <img src="Astrox 88s pro.jpg" alt="<?php echo htmlspecialchars($name); ?>">
+            <img src="Lining ATSS993.png" alt="<?php echo htmlspecialchars($name); ?>">
             <div class="product-info">
                 <h1><?php echo htmlspecialchars($name); ?></h1>
                 <p class="price">RM<?php echo htmlspecialchars($price); ?></p>
@@ -91,13 +89,15 @@ $specifications = [
                 </p>
                 <div class="purchase-section">
                     <div class="size-selection">
-                        <label for="grip-size">Choose Grip Size:</label>
-                        <select id="grip-size" name="grip-size">
-                            <option value="G4">G4</option>
-                            <option value="G5">G5</option>
+                        <label for="shirt-size">Choose Size:</label>
+                        <select id="shirt-size" name="shirt-size">
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Astrox 88s pro.jpg', document.getElementById('grip-size').value)">
+                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Lining_ATSS993.png', document.getElementById('shirt-size').value)">
                         Add to Cart
                     </button>
                 </div>
