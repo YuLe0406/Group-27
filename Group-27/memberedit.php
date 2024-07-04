@@ -48,7 +48,7 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <title>Edit Member</title>
-    <link href="design.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
 <div id="wrapper">

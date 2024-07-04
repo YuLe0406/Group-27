@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Staff</title>
-    <link href="design.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
  

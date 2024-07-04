@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Edit Category</title>
-    <link href="design.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
 <div id="wrapper">

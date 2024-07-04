@@ -17,7 +17,7 @@ if (isset($_GET["product_id"])) {
 <head>
     <meta charset="UTF-8">
     <title>Edit Product</title>
-    <link href="design.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
 <div id="wrapper">

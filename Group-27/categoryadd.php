@@ -22,7 +22,7 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <title>Add New Category</title>
-    <link rel="stylesheet" href="manage_categories.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
     <header>

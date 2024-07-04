@@ -23,7 +23,7 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <title>Add New Staff</title>
-    <link rel="stylesheet" href="manage_staff.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
     <header>
