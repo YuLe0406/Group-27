@@ -35,7 +35,7 @@ mysqli_close($conn);
     <main>
         <form method="post" action="">
             <p>
-                <label>Customer:</label>
+                <label>Customer Name:</label>
                 <select name="customer_id" required>
                     <?php while ($row = mysqli_fetch_assoc($customers)) { ?>
                         <option value="<?php echo $row['member_id']; ?>"><?php echo $row['name']; ?></option>
@@ -49,6 +49,9 @@ mysqli_close($conn);
             <p><button type="submit" name="add_order">Add Order</button></p>
         </form>
     </main>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>

@@ -22,7 +22,7 @@ mysqli_close($conn);
 <head>
     <meta charset="UTF-8">
     <title>Add New Category</title>
-    <link rel="stylesheet" href="manage_categories.css">
+    <link rel="stylesheet" href="manage.css">
 </head>
 <body>
     <header>
@@ -34,6 +34,9 @@ mysqli_close($conn);
             <p><button type="submit" name="add_category">Add Category</button></p>
         </form>
     </main>
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
     </footer>

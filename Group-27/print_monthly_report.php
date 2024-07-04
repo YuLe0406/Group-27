@@ -12,13 +12,13 @@ if (!$conn) {
 
 $query = "
     SELECT 
-        order_id, 
-        order_date, 
-        customer_id, 
+        order_id,
+        order_date,
+        customer_id,
         total_price
-    FROM 
+    FROM
         manage_orders
-    WHERE 
+    WHERE
         DATE_FORMAT(order_date, '%Y-%m') = ?
 ";
 
@@ -28,8 +28,10 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 $sales = [];
+$total_month_price = 0;
 while ($row = mysqli_fetch_assoc($result)) {
     $sales[] = $row;
+    $total_month_price += $row['total_price'];
 }
 
 mysqli_close($conn);
@@ -70,6 +72,10 @@ mysqli_close($conn);
                     <td>RM <?php echo number_format($sale['total_price'], 2); ?></td>
                 </tr>
                 <?php endforeach; ?>
+                <tr class="total">
+                    <td colspan="3">Total Month Price</td>
+                    <td>RM <?php echo number_format($total_month_price, 2); ?></td>
+                </tr>
             <?php else: ?>
                 <tr>
                     <td colspan="4">No sales data available for this month</td>
@@ -81,7 +87,6 @@ mysqli_close($conn);
         <div class="no-print">
             <p>
                 <button onclick="window.print()">Print Report</button>
-                <button onclick="window.close()">Close</button>
             </p>
         </div>
     </footer>

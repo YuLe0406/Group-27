@@ -71,7 +71,9 @@ if (!$result) {
                 </tr>
             <?php endwhile; ?>
         </table>
-        <a href="orderadd.php"><button>Add New Order</button></a>
+        <form method="post" action="">
+        <button type="submit" name="add">Add New Order</button>
+        </form>
     </main>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
@@ -86,6 +88,10 @@ if (!$result) {
 </html>
 
 <?php
+
+if (isset($_POST["add"])) {
+    header("Location: orderadd.php");
+}
 mysqli_free_result($result);
 mysqli_close($conn);
 ?>
