@@ -29,12 +29,8 @@ if (isset($_POST["savebtn"])) {
     }
 
     if (mysqli_query($conn, $sql)) {
-        ?>
-        <script type="text/javascript">
-            alert("Member Updated");
-            window.location.href = "manage_members.php";
-        </script>
-        <?php
+        header("Location: manage_members.php");
+        exit();
     } else {
         echo "Error updating member: " . mysqli_error($conn);
     }
@@ -51,18 +47,32 @@ mysqli_close($conn);
     <link rel="stylesheet" href="manage.css">
 </head>
 <body>
-<div id="wrapper">
-    <?php if (isset($row)): ?>
-    <h1>Edit Member</h1>
-    <form name="editfrm" method="post" action="">
-        <p><label>Name:</label><input type="text" name="name" size="80" value="<?php echo htmlspecialchars($row['name']); ?>"></p>
-        <p><label>Email:</label><input type="email" name="email" size="80" value="<?php echo htmlspecialchars($row['email']); ?>"></p>
-        <p><label>Password:</label><input type="password" name="password" size="80"></p>
-        <p><small>Leave password blank if you do not want to change it.</small></p>
-        <p><input type="hidden" name="member_id" value="<?php echo $member_id; ?>"></p>
-        <p><input type="submit" name="savebtn" value="UPDATE MEMBER"></p>
-    </form>
-    <?php endif; ?>
-</div>
+    <header>
+        <h1>Edit Member</h1>
+    </header>
+    <main>
+        <?php if (isset($row)): ?>
+        <form method="post" action="">
+            <p>
+                <label>Name:</label>
+                <input type="text" name="name" required value="<?php echo htmlspecialchars($row['name']); ?>">
+            </p>
+            <p>
+                <label>Email:</label>
+                <input type="email" name="email" required value="<?php echo htmlspecialchars($row['email']); ?>">
+            </p>
+            <p>
+                <label>Password:</label>
+                <input type="password" name="password">
+            </p>
+            <p><small>Leave password blank if you do not want to change it.</small></p>
+            <input type="hidden" name="member_id" value="<?php echo $member_id; ?>">
+            <p><button type="submit" name="savebtn">Update Member</button></p>
+        </form>
+        <?php endif; ?>
+    </main>
+    <footer>
+        <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
+    </footer>
 </body>
 </html>
