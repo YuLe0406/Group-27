@@ -87,7 +87,6 @@ mysqli_close($conn);
         <div class="no-print">
             <p>
                 <button onclick="window.print()">Print Report</button>
-                <button onclick="window.close()">Close</button>
             </p>
         </div>
     </footer>
