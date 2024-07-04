@@ -43,7 +43,8 @@ $specifications = [
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($name); ?> - Product VICTOR Badminton Shoes A170</title>
     <link rel="stylesheet" href="product_detail.css">
-    <script src="cart.js"></script> <!-- Include the JavaScript file -->
+    <script src="product_detail_alert.js" defer></script>
+    <script src="cart.js"></script>
 </head>
 <body>
     <header>
@@ -66,7 +67,7 @@ $specifications = [
     </div>
     <main>
         <div class="product-detail">
-            <img src="victor_badminton_shoes_A170.jpg" alt="<?php echo htmlspecialchars($name); ?>">
+            <img src="victor badminton shoes A170.jpg" alt="<?php echo htmlspecialchars($name); ?>">
             <div class="product-info">
                 <h1><?php echo htmlspecialchars($name); ?></h1>
                 <p class="price">RM<?php echo htmlspecialchars($price); ?></p>
@@ -98,7 +99,7 @@ $specifications = [
                             <option value="10">10</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'victor_badminton_shoes_A170.jpg', document.getElementById('shoe-size').value)">
+                    <button id="add-to-cart-btn" <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'victor_badminton_shoes_A170.jpg', document.getElementById('shoe-size').value)">
                         Add to Cart
                     </button>
                 </div>
