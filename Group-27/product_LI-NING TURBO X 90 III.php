@@ -44,10 +44,10 @@ $specifications = [
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($name); ?> - Product TURBO X 90 III</title>
     <link rel="stylesheet" href="product_detail.css">
-    <script src="cart.js"></script>
     <script src="product_detail_alert.js" defer></script>
+    <script src="cart.js"></script>
 </head>
-<body onload="checkStock(<?php echo $store; ?>)">
+<body>
     <header>
         <h1>Product Detail</h1>
     </header>

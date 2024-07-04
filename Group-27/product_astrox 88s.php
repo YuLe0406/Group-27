@@ -44,10 +44,10 @@ $specifications = [
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($name); ?> - Product Astrox 88s Pro</title>
     <link rel="stylesheet" href="product_detail.css">
-    <script src="cart.js"></script>
     <script src="product_detail_alert.js" defer></script>
+    <script src="cart.js"></script>
 </head>
-<body onload="checkStock(<?php echo $store; ?>)">
+<body>
     <header>
         <h1>Astrox 88s Pro</h1>
     </header>
