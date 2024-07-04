@@ -52,7 +52,9 @@ $result = mysqli_query($conn, $memberQuery);
                 </tr>
             <?php } ?>
         </table>
-        <a href="memberadd.php"><button>Add New Member</button></a>
+        <form method="post" action="">
+        <button type="submit" name="add">Add New Member</button>
+        </form>
     </main>
     <footer>
         <p>&copy; 2024 PEPE Sport Shop. All rights reserved.</p>
@@ -73,6 +75,11 @@ if (isset($_REQUEST["del"])) {
     header("Location: manage_members.php");
     exit();
 }
+
+if (isset($_POST["add"])) {
+    header("Location: memberadd.php");
+}
+
 
 mysqli_free_result($result);
 mysqli_close($conn);
