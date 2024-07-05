@@ -7,7 +7,7 @@ function setCartItems(cartItems) {
 }
 
 
-function addToCart(name, price, image, store) {
+function addToCart(name, price, image) {
     const cartItems = getCartItems();
     const existingItemIndex = cartItems.findIndex(item => item.name === name);
     
@@ -18,12 +18,7 @@ function addToCart(name, price, image, store) {
     }
     
     setCartItems(cartItems);
-    if (store == 0) {
-        alert('Out of Stock');
-        return;
-    } else {
-        alert(name + ' has been added to your shopping cart.');
-    }
+    alert(name + ' has been added to your shopping cart.');
     displayCartItems();
 }
 
