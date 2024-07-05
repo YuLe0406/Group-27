@@ -42,7 +42,6 @@ $specifications = [
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($name); ?> - Product Lining ATSS993</title>
     <link rel="stylesheet" href="product_detail.css">
-    <script src="product_detail_alert.js" defer></script>
     <script src="cart.js"></script>
 </head>
 <body>
@@ -98,7 +97,7 @@ $specifications = [
                             <option value="XL">XL</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Lining_ATSS993.png', document.getElementById('shirt-size').value)">
+                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Lining ATSS993.png', document.getElementById('shirt-size').value)">
                         Add to Cart
                     </button>
                 </div>

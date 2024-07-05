@@ -44,7 +44,6 @@ $specifications = [
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($name); ?> - Product Ryuga</title>
     <link rel="stylesheet" href="product_detail.css">
-    <script src="product_detail_alert.js" defer></script>
     <script src="cart.js"></script> <!-- Include the JavaScript file -->
 </head>
 <body>

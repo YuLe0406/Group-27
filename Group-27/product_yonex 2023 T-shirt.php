@@ -42,7 +42,6 @@ $specifications = [
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($name); ?> - Product Yonex Malaysia Master 2023 T-shirt</title>
     <link rel="stylesheet" href="product_detail.css">
-    <script src="product_detail_alert.js" defer></script>
     <script src="cart.js"></script>
 </head>
 <body>
@@ -98,7 +97,7 @@ $specifications = [
                             <option value="XL">XL</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Yonex_Malaysia_Master_2023_T-shirt.jpg', document.getElementById('shirt-size').value)">
+                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Yonex Malaysia Master 2023 T-shirt.jpg', document.getElementById('shirt-size').value)">
                         Add to Cart
                     </button>
                 </div>

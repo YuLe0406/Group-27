@@ -6,6 +6,7 @@ function setCartItems(cartItems) {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
+
 function addToCart(name, price, image) {
     const cartItems = getCartItems();
     const existingItemIndex = cartItems.findIndex(item => item.name === name);
@@ -17,6 +18,7 @@ function addToCart(name, price, image) {
     }
     
     setCartItems(cartItems);
+    alert(name + ' has been added to your shopping cart.');
     displayCartItems();
 }
 
