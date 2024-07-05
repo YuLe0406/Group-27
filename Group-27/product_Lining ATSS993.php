@@ -97,7 +97,7 @@ $specifications = [
                             <option value="XL">XL</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Lining_ATSS993.png', document.getElementById('shirt-size').value)">
+                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Lining ATSS993.png', document.getElementById('shirt-size').value)">
                         Add to Cart
                     </button>
                 </div>

@@ -6,7 +6,8 @@ function setCartItems(cartItems) {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
 }
 
-function addToCart(name, price, image) {
+
+function addToCart(name, price, image, store) {
     const cartItems = getCartItems();
     const existingItemIndex = cartItems.findIndex(item => item.name === name);
     
@@ -17,6 +18,12 @@ function addToCart(name, price, image) {
     }
     
     setCartItems(cartItems);
+    if (store == 0) {
+        alert('Out of Stock');
+        return;
+    } else {
+        alert(name + ' has been added to your shopping cart.');
+    }
     displayCartItems();
 }
 

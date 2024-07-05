@@ -98,7 +98,7 @@ $specifications = [
                             <option value="10">10</option>
                         </select>
                     </div>
-                    <button id="add-to-cart-btn" <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Li Ning Ning Ultra Speed Sn44.jpg', document.getElementById('shoe-size').value)">
+                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Li Ning Ning Ultra Speed Sn44.jpg', document.getElementById('shoe-size').value)">
                         Add to Cart
                     </button>
                 </div>

@@ -97,7 +97,7 @@ $specifications = [
                             <option value="XL">XL</option>
                         </select>
                     </div>
-                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Yonex_Malaysia_Master_2023_T-shirt.jpg', document.getElementById('shirt-size').value)">
+                    <button <?php echo ($store == 0) ? 'disabled' : ''; ?> onclick="addToCart('<?php echo htmlspecialchars($name); ?>', <?php echo htmlspecialchars($price); ?>, 'Yonex Malaysia Master 2023 T-shirt.jpg', document.getElementById('shirt-size').value)">
                         Add to Cart
                     </button>
                 </div>
